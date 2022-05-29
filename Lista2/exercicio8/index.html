@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Exercício 008 - Ano Bissexto (Ou não)</title>
+        <style>
+            .formularioExterno{
+                width: 400px;
+                height: 320px;
+                border-radius: 20px;
+                justify-items: center;
+                margin-top: 250px;
+                background-color: aliceblue;
+
+            }
+            
+            h1{
+                font-family: Arial, Helvetica, sans-serif;
+            }
+
+            .botoes{
+                border-radius: 5px;
+                width: 100px;
+                height: 50px;
+                margin: 10px;
+                font-size: 20px;
+            }
+
+            input{
+                text-align: center;
+                width: 200px;
+            }
+        </style>
+    </head>
+    <body>
+        <center><form action="" method="get">
+            <center><fieldset class="formularioExterno">
+
+                <!-- Enunciado: Faça um algoritmo que leia um determinado ano e mostre se ele é ou não BISSEXTO. -->
+
+                <h1>Ano Bissexto (Ou não)</h1>
+
+                <label for="idAno"><strong>Qual é o ano?</strong></label><br><br>
+                <input
+                    id="idAno"
+                    type="number"
+                    name="nmAno">
+                
+                <br><br>
+
+                <label for="idBis"><strong></strong></label><br>
+                <input
+                    id="idBis"
+                    type="text"
+                    name="nmBis"
+                    readonly
+                    value="">
+
+                <br><br>
+
+                <input
+                    class="botoes"
+                    type="button"
+                    value="Verificar"
+                    onclick="calcular()">
+
+            </fieldset></center>
+
+        </form></center>
+
+
+        <script>
+            
+            function calcular(){
+
+                var ano = Number(document.getElementById("idAno").value);
+                var resto4 = ano % 4;
+                var resto100 = ano % 100;
+                var resto400 = ano % 400;
+
+                if ((resto4 == 0  && resto100 != 0)|| (resto400 == 0)) {                    
+                    document.getElementById("idBis").value = "O ano é bissexto!";
+                    }else{
+                        document.getElementById("idBis").value = "O ano não é um ano bissexto!";      
+                    }
+            }
+        </script>
+    </body>
+</html>

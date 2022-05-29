@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Exercício 004 - Calculadora de IMC</title>
+        <style>
+            .formularioExterno{
+                width: 400px;
+                height: 350px;
+                border-radius: 20px;
+                justify-items: center;
+                margin-top: 250px;
+                background-color: aliceblue;
+
+            }
+            
+            h1{
+                font-family: Arial, Helvetica, sans-serif;
+            }
+
+            .botoes{
+                border-radius: 100%;
+                width: 50px;
+                height:50px;
+                margin: 10px;
+                font-size: 30px;
+            }
+
+            input{
+                width: 100px;
+            }
+        </style>
+    </head>
+    <body>
+        <center><form action="" method="get">
+            <center><fieldset class="formularioExterno">
+
+                <!-- Enunciado: Crie um programa para receber a altura, peso e calcule o imc. IMC = peso / (altura x altura).
+
+                16 a 16,9 kg/m² - Muito abaixo do peso
+                17 a 18,4 kg/m² - Abaixo do peso
+                18,5 a 24,9 kg/m² - Peso normal
+                25 a 29,9 kg/m² - Acima do peso
+                30 a 34,9 kg/m² - Obesidade grau I
+                35 a 40 kg/m² - Obesidade grau II
+                maior que 40 kg/m² - Obesidade grau III... -->
+
+                <h1>Calculadora de IMC</h1>
+
+                <label for="idAltura"><strong>Altura</strong></label><br>
+                <input
+                    id="idAltura"
+                    type="number"
+                    name="nmAltura"
+                    value=""
+                    min="0"
+                    max="2.40"
+                    step="0.01">
+                
+                <br><br>
+
+                <label for="idPeso"><strong>Peso</strong></label><br>
+                <input
+                    id="idPeso"
+                    type="number"
+                    name="nmPeso"
+                    value=""
+                    min="0"
+                    max="200"
+                    step="0.01">
+
+                <br><br>
+
+                <label for="idResult"><strong>IMC</strong></label><br>
+                <input
+                    id="idResult"
+                    type="number"
+                    name="nmResult"
+                    readonly
+                    value="">
+
+                <br><br>
+
+                <input
+                    class="botoes"
+                    type="button"
+                    value="="
+                    onclick="somarNumeros()">
+
+            </fieldset></center>
+
+        </form></center>
+
+
+        <script>
+            
+            function somarNumeros(){
+
+                var altura = Number(document.getElementById("idAltura").value);
+                var peso = Number(document.getElementById("idPeso").value);
+
+                var imc = peso / (altura * altura);
+
+                var resultado = document.getElementById("idResult").value = imc;
+            }
+
+        </script>
+    </body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Exercício 007 - Calcular venda de produto</title>
+        <style>
+            .formularioExterno{
+                width: 500px;
+                height: 450px;
+                border-radius: 20px;
+                justify-items: center;
+                margin-top: 250px;
+                background-color: aliceblue;
+
+            }
+            
+            h1{
+                font-family: Arial, Helvetica, sans-serif;
+            }
+
+            .botoes{
+                border-radius: 100%;
+                width: 50px;
+                height:50px;
+                margin: 10px;
+                font-size: 30px;
+            }
+
+            input{
+                text-align: center;
+                width: 100px;
+            }
+        </style>
+    </head>
+    <body>
+        <center><form action="" method="get">
+            <center><fieldset class="formularioExterno">
+
+                <!-- Enunciado: Um comerciante revende diversas mercadorias com uma margem de lucro líquido de 35%. O comerciante deseja um programa que calcule o preço de venda e o valor do lucro líquido de cada um de seus produtos.
+
+                A fórmula para obter o preço de venda é:
+                Preço de compra + custos fixos + 35% = preço de venda -->
+
+                <h1>Calcule o lucro de venda</h1>
+
+                <label for="idCompra"><strong>Preço de compra</strong></label><br>
+                <input
+                    id="idCompra"
+                    type="number"
+                    name="nmCompra"
+                    value=""
+                    min="0"
+                    step="0.01">
+                
+                <br><br>
+
+                <label for="idCustos"><strong>Custos fixos</strong></label><br>
+                <input
+                    id="idCustos"
+                    type="number"
+                    name="nmCustos"
+                    value=""
+                    min="0"
+                    step="0.1">
+                
+                <br><br>
+
+                <label for="idVenda"><strong>Preço de venda</strong></label><br>
+                <input
+                    id="idVenda"
+                    type="number"
+                    name="nmVenda"
+                    value=""
+                    min="0"
+                    step="0.1"
+                    readonly>
+                
+                <br><br>
+
+                <label for="idLucro"><strong>Lucro líquido</strong></label><br>
+                <input
+                    id="idLucro"
+                    type="number"
+                    name="nmLucro"
+                    value=""
+                    min="0"
+                    step="0.1"
+                    readonly>
+                
+                <br><br>
+
+                <input 
+                    class="botoes"
+                    type="button"
+                    value="="
+                    onclick="calcularVendaELucro()">
+
+            </fieldset></center>
+
+        </form></center>
+
+
+        <script>
+            
+            function calcularVendaELucro(){
+
+                var valorCompra = Number(document.getElementById("idCompra").value);
+                var valorCusto = Number(document.getElementById("idCustos").value);
+
+                var margem = (valorCompra + valorCusto) * 0.35;
+                var valorVenda = valorCompra + valorCusto + margem;
+                var lucroLiquido = valorVenda - valorCompra - valorCusto;
+
+
+                var valorVenda = document.getElementById("idVenda").value = valorVenda.toFixed(2);
+
+                var lucroLiquido = document.getElementById("idLucro").value = lucroLiquido.toFixed(2);
+            }
+
+        </script>
+    </body>
+</html>

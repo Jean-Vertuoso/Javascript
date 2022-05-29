@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Exercício 005 - Ordem decrescente</title>
+        <style>
+            .formularioExterno{
+                width: 400px;
+                height: 400px;
+                border-radius: 20px;
+                justify-items: center;
+                margin-top: 250px;
+                background-color: aliceblue;
+
+            }
+            
+            h1{
+                font-family: Arial, Helvetica, sans-serif;
+            }
+
+            .botoes{
+                border-radius: 100%;
+                width: 50px;
+                height:50px;
+                margin: 10px;
+                font-size: 30px;
+            }
+
+            input{
+                text-align: center;
+                width: 200px;
+            }
+
+            .botoes{
+                border-radius: 5px;
+                width: 100px;
+                height: 50px;
+                margin: 10px;
+                font-size: 20px;
+            }
+        </style>
+    </head>
+    <body>
+        <center><form action="" method="get">
+            <center><fieldset class="formularioExterno">
+
+                <!-- Enunciado: Elabore um algoritmo para entrar com três números e imprimi-los em ordem decrescente (suponha números diferentes). -->
+
+                <h1>Ordem decrescente</h1>
+
+                <label for="idNum1"><strong>Primeiro número</strong></label><br>
+                <input
+                    id="idNum1"
+                    type="number"
+                    name="nmNum1"
+                    value=""
+                    min="0">
+                
+                <br><br>
+
+                <label for="idNum2"><strong>Segundo número</strong></label><br>
+                <input
+                    id="idNum2"
+                    type="number"
+                    name="nmNum2"
+                    value=""
+                    min="0">
+                
+                <br><br>
+
+                <label for="idNum3"><strong>Terceiro número</strong></label><br>
+                <input
+                    id="idNum3"
+                    type="number"
+                    name="nmNum3"
+                    value=""
+                    min="0">
+                
+                <br><br>
+
+                <label for="idResult"><strong>Resultado</strong></label><br>
+                <input
+                    id="idResult"
+                    type="text"
+                    name="nmResult"
+                    readonly
+                    value="">
+
+                <br><br>
+
+                <input
+                    class="botoes"
+                    type="button"
+                    value="Verificar"
+                    onclick="verificarNumeros()">
+
+            </fieldset></center>
+
+        </form></center>
+
+
+        <script>
+            
+            function verificarNumeros(){
+
+                var num1 = Number(document.getElementById("idNum1").value);
+                var num2 = Number(document.getElementById("idNum2").value);
+                var num3 = Number(document.getElementById("idNum3").value);
+
+                if (num1 > num2 && num2 > num3){                    
+                    document.getElementById("idResult").value = num1 +", "+ num2 +", "+ num3;
+
+                    } else if (num1 > num3 && num3 > num2){
+                        document.getElementById("idResult").value = num1 +", "+ num3 +", "+ num2;
+
+                        } else if (num2 > num1 && num1 > num3){
+                            document.getElementById("idResult").value = num2 +", "+ num1 +", "+ num3;
+
+                            } else if (num2 > num3 && num3 > num1){
+                                document.getElementById("idResult").value = num2 +", "+ num3 +", "+ num1;
+
+                                } else if (num3 > num2 && num2 > num1){
+                                    document.getElementById("idResult").value = num3 +", "+ num2 +", "+ num1;
+                                    
+                                    } else if (num3 > num1 && num1 > num2){
+                                        document.getElementById("idResult").value = num3 +", "+ num1 +", "+ num2;
+                } else {
+                    document.getElementById("idResult").value = "Contém números iguais!";
+                }
+                
+                /*
+                let numAux;
+                if (num1 < num2){
+                    numAux = num2
+                    num2 = num1
+                    num1 = numAux
+                }
+
+                if (num2 < num3){
+                    numAux = num3
+                    num3 = num2
+                    num2 = numAux
+                }*/
+            }
+        </script>
+    </body>
+</html>

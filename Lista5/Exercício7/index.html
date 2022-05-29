@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Exercício 007 - Jogo de adivinhação</title>
+        <style>
+            .formularioExterno{
+                width: 400px;
+                height: 450px;
+                border-radius: 20px;
+                justify-items: center;
+                margin-top: 250px;
+                background-color: aliceblue;
+
+            }
+            
+            h1{
+                font-family: Arial, Helvetica, sans-serif;
+            }
+
+            .botoes{
+                border-radius: 5px;
+                width: 100px;
+                height: 50px;
+                margin: 10px;
+                font-size: 20px;
+            }
+
+            input{
+                width:350px;
+            }
+        </style>
+    </head>
+    <body>
+        <center><form action="" method="get">
+            <center><fieldset class="formularioExterno">
+
+                <!-- Crie um algoritmo que leia a idade de 'n' pessoas, mostrando no final:
+                    a) Qual é a média de idade do grupo
+                    b) Quantas pessoas tem mais de 18 anos
+                    c) Quantas pessoas tem menos de 5 anos
+                    d) Qual foi a maior idade lida -->
+
+                <h1>Jogo de adivinhação</h1>
+
+                <label for="idNumero"><strong>Número escolhido</strong></label><br>
+                <input
+                    id="idNumero"
+                    type="number"
+                    name="nmNumero">
+
+                <br><br>
+
+                <input
+                    id="idSaida"
+                    type="text"
+                    name="nmSaida"
+                    disabled>
+                </textarea><br>
+
+                <input
+                    class="botoes"
+                    type="button"
+                    value="Mostrar"
+                    onclick="acertarNumeroSorteado()">
+
+            </fieldset></center>
+
+        </form></center>
+
+
+        <script>
+
+        var numeroSorteado = parseInt(Math.random() * 11);
+        console.log(numeroSorteado);
+        var tentativa = 0;
+
+        if (numeroSorteado == 0) {
+            numeroSorteado = 1
+        }
+
+            function acertarNumeroSorteado(callback){
+
+                let numeroApostado = Number(document.querySelector("#idNumero").value);
+                let saida = document.querySelector("#idSaida");
+
+                while(tentativa < 0){
+
+                    if (numeroApostado == numeroSorteado) {
+                        saida.value = "Parabéns vc acertou!";
+                        document.querySelector("#idNumero").disabled = true;
+                        break;
+                    
+                        } else if (numeroApostado > numeroSorteado) {
+                            saida.value = "O número apostado é maior que sorteado"
+                            tentativa++;
+                            callback();
+
+                            } else if(numeroApostado < numeroSorteado){
+                                saida.value = "O número apostado é menor que sorteado"
+                                tentativa++;
+                                callback();
+
+                                    }else{
+                                        saida.value = "Jogo encerrado, você perdeu, mais sorte da próxima vez!"
+                                        document.querySelector("#idNumero").disabled = true;
+                                        break;
+                                    }
+                }
+            }
+        </script>
+    </body>
+</html>

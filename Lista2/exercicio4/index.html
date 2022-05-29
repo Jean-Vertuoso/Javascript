@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Exercício 004 - Caixa Eletrônico</title>
+        <style>
+            .formularioExterno{
+                width: 600px;
+                height: 900px;
+                border-radius: 20px;
+                justify-items: center;
+                background-color: aliceblue;
+            }
+            
+            h1{
+                font-family: Arial, Helvetica, sans-serif;
+            }
+
+            .botoes{
+                border-radius: 5px;
+                width: 200px;
+                height: 50px;
+                margin: 10px;
+                font-size: 20px;
+            }
+
+            input{
+                text-align: center;
+                width: 300px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <center><form action="" method="get">
+            <center><fieldset class="formularioExterno">
+
+                <!-- Enunciado: Crie um algoritmo que permita cadastrar um cliente de um banco: nome do correntista, o nome do banco, o número da conta, o limite de credito e saldo atual. Realize operações de crédito e débito na conta específica e, no final, imprima o saldo final do cliente. -->
+
+                <h1>Caixa Eletrônico</h1>
+
+
+                <label for="idNome"><strong>Correntista</strong></label><br>
+                <input
+                    id="idNome"
+                    type="text"
+                    name="nmNome"
+                    placeholder="Digite seu nome"
+                    required>
+                    
+                <br><br>
+
+                <label for="idBanco"><strong>Banco</strong></label><br>
+                <input
+                    id="idBanco"
+                    type="text"
+                    name="nmBanco"
+                    placeholder="Digite o nome do banco"
+                    required>
+                    
+                <br><br>
+
+                <label for="idConta"><strong>Conta</strong></label><br>
+                <input
+                    id="idConta"
+                    type="number"
+                    name="nmConta"
+                    placeholder="Digite o número da conta"
+                    required>
+                    
+                <br><br>
+
+                <label for="idLimite"><strong>Limite de Crédito</strong></label><br>
+                <input
+                    id="idLimite"
+                    type="number"
+                    name="nmLimite"
+                    min="0"
+                    step="0.01"
+                    placeholder="Digite quanto você tem de crédito"
+                    required
+                    disabled>
+
+                <br><br>
+
+
+                <h2>Operação</h2>
+                
+                <br>
+
+                <label for="idValor"><strong>Digite o valor</strong></label><br>
+                <input
+                    id="idValor"
+                    type="number"
+                    name="nmValor"
+                    min="0"
+                    step="0.01">
+
+                <br><br>
+
+                <label for="idCredito">Crédito</label><br>
+                <input
+                    id="idCredito"
+                    type="radio"
+                    name="nmOp"
+                    checked><br>
+
+                <label for="idDebito">Débito</label><br>            
+                <input
+                    id="idDebito"
+                    type="radio"
+                    name="nmOp"><br>
+
+                <br><br>
+                
+                <label for="idSaldo"><strong>Saldo atual</strong></label><br>
+                <input
+                    id="idSaldo"
+                    type="number"
+                    name="nmSaldo"
+                    min="0"
+                    step="0.01"
+                    required
+                    disabled>
+
+                <br><br>
+
+                <input
+                    id="idStatus"
+                    type="text"
+                    name="nmStatus"
+                    disabled>
+
+                <br><br>
+
+                <textarea
+                    id="idDados"
+                    name="nmDados"
+                    cols="40"
+                    rows="10"
+                    readonly
+                    disabled></textarea>
+
+                <br><br>
+
+                <input
+                    class="botoes"
+                    type="button"
+                    value="Depositar/Sacar"
+                    onclick="calcular()">
+
+                <input
+                    class="botoes"
+                    type="button"
+                    value="Conferir Saldo"
+                    onclick="conferirSaldo()">
+
+                <br><br>
+
+            </fieldset></center>
+
+        </form></center>
+
+
+        <script>
+            
+            document.getElementById("idSaldo").value = 0;
+            document.getElementById("idLimite").value = 200;
+            var saldo = 0;
+            var limite = 200;
+
+            function calcular(){
+
+            var valor = Number(document.getElementById("idValor").value);
+            var debito = document.getElementById("idDebito").checked;
+
+
+                if (debito){
+                    if (limite >= (-1 * saldo) +  valor) {
+                        saldo = saldo - valor;
+                        document.getElementById("idSaldo").value = saldo;
+                        document.getElementById("idStatus").value = "Status: Operacao Realizada com Sucesso";
+                    } else {
+                        document.getElementById("idSaldo").value = saldo;
+                        document.getElementById("idStatus").value = "Status: Saldo Insuficiente";
+                    }
+                
+                } else {
+                    saldo = saldo + valor;
+                    document.getElementById("idSaldo").value = saldo;
+                    document.getElementById("idStatus").value = "Status: Operacao Realizada com Sucesso";
+                }
+            }
+
+            function conferirSaldo(){
+
+                var nomeCorrentista = document.getElementById("idNome").value;
+                var banco = document.getElementById("idBanco").value;
+                var numeroConta = document.getElementById("idConta").value;
+
+                document.getElementById("idDados").value = "Nome: "+ nomeCorrentista + "\nBanco: "+ banco +"\nNúmero da conta: "+ numeroConta + "\nSaldo: R$"+ saldo.toFixed(2);
+            }
+        </script>
+    </body>
+</html>

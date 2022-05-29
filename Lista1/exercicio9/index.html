@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Exercício 009 - Calculadora de IMC</title>
+        <style>
+            .formularioExterno{
+                width: 400px;
+                height: 400px;
+                border-radius: 20px;
+                justify-items: center;
+                margin-top: 250px;
+                background-color: aliceblue;
+
+            }
+            
+            h1{
+                font-family: Arial, Helvetica, sans-serif;
+            }
+
+            .botoes{
+                border-radius: 100%;
+                width: 50px;
+                height:50px;
+                margin: 10px;
+                font-size: 30px;
+            }
+
+            input{
+                width: 100px;
+            }
+
+            .caixas{
+                width:200px;
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <center><form action="" method="get">
+            <center><fieldset class="formularioExterno">
+
+                <h1>Calculadora de IMC</h1>
+
+                <label for="idAltura"><strong>Altura</strong></label><br>
+                <input
+                    id="idAltura"
+                    type="number"
+                    name="nmAltura"
+                    value=""
+                    min="0"
+                    max="2.40"
+                    step="0.01">
+                
+                <br><br>
+
+                <label for="idPeso"><strong>Peso</strong></label><br>
+                <input
+                    id="idPeso"
+                    type="number"
+                    name="nmPeso"
+                    value=""
+                    min="0"
+                    max="200"
+                    step="0.01">
+
+                <br><br>
+
+                <label for="idImc"><strong>IMC</strong></label><br><br>
+                <input
+                    id="idImc"
+                    class="caixas"
+                    type="number"
+                    name="nmImc"
+                    readonly
+                    value=""><br><br>
+
+                <input
+                    id="idResult"
+                    class="caixas"
+                    type="text"
+                    name="nmResult"
+                    readonly
+                    value="">
+
+                <br><br>
+
+                <input
+                    class="botoes"
+                    type="button"
+                    value="="
+                    onclick="calcularImc()">
+
+            </fieldset></center>
+
+        </form></center>
+
+
+        <script>
+            
+            function calcularImc(){
+
+                var altura = Number(document.getElementById("idAltura").value);
+                var peso = Number(document.getElementById("idPeso").value);
+
+                var imc = peso / (altura * altura);
+
+                var resultado = document.getElementById("idImc").value = imc.toFixed(2);
+            
+
+                if (imc <= 16.9){
+                    document.getElementById("idResult").value = "Muito abaixo do peso";
+
+                } else {
+                    if (imc > 16.9 && imc <= 18.4){
+                        document.getElementById("idResult").value = "Abaixo do peso";
+
+                    } else {
+                        if (imc > 18.4 && imc <= 24.9){
+                            document.getElementById("idResult").value = "Peso normal";
+
+                        } else {
+                            if (imc > 24.9 && imc <= 29.9){                    
+                                document.getElementById("idResult").value = "Acima do peso";
+                            
+                            } else {
+                                if (imc > 29.9 && imc <= 34.9){
+                                    document.getElementById("idResult").value = "Obesidade Grau I";
+                                
+                                } else {
+                                    if (imc > 34.9 && imc <= 40){                    
+                                        document.getElementById("idResult").value = "Obesidade Grau II";
+
+                                        }else{
+                                            document.getElementById("idResult").value = "Obesidade Grau III";
+                                        }
+                                    }
+                                }   
+                            }
+                        }
+                    }
+                }
+
+        </script>
+    </body>
+</html>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Exercício 003 - Média de temperatura</title>
+        <style>
+            .formularioExterno{
+                width: 500px;
+                height: 500px;
+                border-radius: 20px;
+                justify-items: center;
+                margin-top: 250px;
+                background-color: aliceblue;
+
+            }
+            
+            h1{
+                font-family: Arial, Helvetica, sans-serif;
+            }
+
+            .botoes{
+                border-radius: 100%;
+                width: 50px;
+                height:50px;
+                margin: 10px;
+                font-size: 30px;
+            }
+
+            input{
+                text-align: center;
+                width: 200px;
+            }
+
+            .esquerdo{
+                margin-left: 100px;
+            }
+
+            .caixa1{
+                width:300px;
+            }
+        </style>
+    </head>
+    <body>
+        <center><form action="" method="get">
+            <center><fieldset class="formularioExterno">
+
+                <!-- Enunciado: Crie um algoritmo que permita cadastrar e imprimir a temperatura dos últimos 3 dias. Calcule a média e descubra se a temperatura de hoje está acima ou abaixo da média. -->
+
+                <h1>Média de temperatura</h1>
+
+                <label for="idDia1"><strong>Digite a temp. do 1º dia</strong></label><br>
+                <input
+                    id="idDia1"
+                    type="number"
+                    name="nmDia1"
+                    value=""
+                    min="0"
+                    max="60">
+                    
+                <br><br>
+
+                <label for="idDia2"><strong>Digite a temp. do 2º dia</strong></label><br>
+                <input
+                    id="idDia2"
+                    type="number"
+                    name="nmDia2"
+                    value=""
+                    min="0"
+                    max="60">
+                    
+                <br><br>
+
+                <label for="idDia3"><strong>Digite a temp. do 3º dia</strong></label><br>
+                <input
+                    id="idDia3"
+                    type="number"
+                    name="nmDia3"
+                    value=""
+                    min="0"
+                    max="60">
+                    
+                <br><br>
+
+                <label for="idTempHoje"><strong>Digite a temp. de hoje</strong></label><br>
+                <input
+                    id="idTempHoje"
+                    type="number"
+                    name="nmTempHoje" 
+                    value=""
+                    min="0"
+                    max="60">
+
+                <br><br>
+
+                <label for="idMedia"><strong>Média últimos 3 dias</strong></label><br>
+                <input
+                    id="idMedia"
+                    type="text"
+                    name="nmMedia"
+                    readonly
+                    value="">
+
+                <br><br>
+
+                <label for="idResult"><strong>Resultado</strong></label><br>
+                <input
+                    id="idResult"
+                    class="caixa1"
+                    type="text"
+                    name="nmResult"
+                    readonly
+                    value="">
+
+                <br><br>
+
+                <input class="botoes" type="button" value="=" onclick="calcular()">
+
+            </fieldset></center>
+
+        </form></center>
+
+
+        <script>
+            
+            function calcular(){
+
+                var dia1 = Number(document.getElementById("idDia1").value);
+                var dia2 = Number(document.getElementById("idDia2").value);
+                var dia3 = Number(document.getElementById("idDia3").value);
+                var hoje = Number(document.getElementById("idTempHoje").value);
+
+                var media = (dia1 + dia2 + dia3) / 3;
+
+                document.getElementById("idMedia").value = media.toFixed(2) + "ºC";
+
+                    if (hoje > media){
+                        document.getElementById("idResult").value = "A temperatura hoje está acima da média!";
+
+                        } else {if (hoje == media){
+                            document.getElementById("idResult").value = "A temperatura hoje está na média!";
+                            
+                            } else {
+                                document.getElementById("idResult").value = "A temperatura hoje está abaixo da média!";
+                            }
+            
+                        }
+                    }
+        </script>
+    </body>
+</html>

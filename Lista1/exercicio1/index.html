@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Exercício 001 - Refletir dado</title>
+        <style>
+            .formularioExterno{
+                width: 400px;
+                height: 400px;
+                border-radius: 20px;
+                justify-items: center;
+                margin-top: 250px;
+                background-color: aliceblue;
+
+            }
+
+            h1{
+                font-family: Arial, Helvetica, sans-serif;
+            }
+
+        </style>
+    </head>
+    <body>
+        <center><form action="" method="get">
+            <center><fieldset class="formularioExterno">
+
+                <!-- Enunciado: Crie uma tela com dois Inputs e um botão. Ao clicar no botão o programa deverá copiar o conteúdo do primeiro input para o segundo. -->
+                
+                <h1>Refletir dado</h1>
+
+                <label for="idTexto"><strong>Texto</strong></label><br>
+                <input
+                    id="idTexto"
+                    type="text"
+                    name="nmTexto"
+                    placeholder="Digite algo para refletir na caixa abaixo"
+                    size="30"
+                    value="">
+                <br>
+                
+                <br><br>
+
+                <label for="idCopia"><strong>Cópia</strong></label><br>
+                <input
+                    id="idCopia"
+                    type="text"
+                    name="nmCopia"
+                    size="30" 
+                    readonly
+                    value="">
+
+                <br><br>
+
+                <input
+                    type="button"
+                    value="Copiar"
+                    onclick="refletirTexto()">
+
+            </fieldset></center>
+
+        </form></center>
+
+
+        <script>
+            
+            function refletirTexto(){
+
+                var texto = document.getElementById("idTexto").value;
+                var copia = document.getElementById("idCopia").value = texto;       
+            }
+        
+        </script>
+    </body>
+</html>

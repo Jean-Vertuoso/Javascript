@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Exercício 007 - Salário líquido</title>
+        <style>
+            .formularioExterno{
+                width: 400px;
+                height: 350px;
+                border-radius: 20px;
+                justify-items: center;
+                margin-top: 250px;
+                background-color: aliceblue;
+
+            }
+            
+            h1{
+                font-family: Arial, Helvetica, sans-serif;
+            }
+
+            .botoes{
+                border-radius: 100%;
+                width: 50px;
+                height:50px;
+                margin: 10px;
+                font-size: 30px;
+            }
+
+            .botoes{
+                border-radius: 5px;
+                width: 100px;
+                height: 50px;
+                margin: 10px;
+                font-size: 20px;
+            }
+        </style>
+        </style>
+    </head>
+    <body>
+        <center><form action="" method="get">
+            <center><fieldset class="formularioExterno">
+
+                <!-- Enunciado: Entrar com o salário de uma pessoa e imprimir o Salário Líquido, segundo a tabela a seguir:
+
+                Salário Bruto	                                            INSS
+                Menor ou igual a R$600,00	                                Isento
+                Maior que R$600,00 e menor ou igual a R$1200,00	            25%
+                Maior que R$1200,00 e menor ou igual a R$2000,00	        30%
+                Maior que R$2000,00	                                        35%
+                
+                O salário líquido é igual ao Salário Bruto menos o desconto de INSS. -->
+
+                <h1>Salário líquido</h1>
+
+                <label for="idSalBruto"><strong>Digite o salário bruto</strong></label><br>
+                <input
+                    id="idSalBruto"
+                    type="text"
+                    name="nmSalBruto"
+                    value=""
+                    size="30"
+                    maxlength="10">
+                
+                <br><br>
+
+                <label for="idSalLiquid"><strong>Salário líquido</strong></label><br>
+                <input
+                    id="idSalLiquid"
+                    type="text"
+                    name="nmSalLiquid"
+                    readonly
+                    value=""
+                    size="30">
+
+                <br><br>
+
+                <input
+                    class="botoes"
+                    type="button"
+                    value="Calcular"
+                    onclick="calcularSalario()">
+
+            </fieldset></center>
+
+        </form></center>
+
+
+        <script>
+            
+            function calcularSalario(){
+
+                let salarioBruto = Number(document.getElementById("idSalBruto").value);
+                let salarioLiquido = Number(document.getElementById("idSalLiquid").value);
+                let taxa25 = salarioBruto * 0.25;
+                let taxa30 = salarioBruto * 0.30;
+                let taxa35 = salarioBruto * 0.35;
+
+
+                if (salarioBruto <= 600){
+                    document.getElementById("idSalLiquid").value = "R$"+ salarioBruto.toFixed(2);
+
+                    } else if (salarioBruto > 600 && salarioBruto <= 1200){
+                        salarioLiquido = salarioBruto - taxa25;
+                        document.getElementById("idSalLiquid").value = "R$"+ salarioLiquido.toFixed(2);
+
+                        } else if (salarioBruto > 1200 && salarioBruto <= 2000){
+                            salarioLiquido = salarioBruto - taxa30;
+                            document.getElementById("idSalLiquid").value = "R$"+ salarioLiquido.toFixed(2);
+
+                            } else if (salarioBruto > 2000){
+                                salarioLiquido = salarioBruto - taxa35;
+                                document.getElementById("idSalLiquid").value = "R$"+ salarioLiquido.toFixed(2);
+                                    
+                    } else {
+                        document.getElementById("idSalLiquid").value = "Número inválido. Tente novamente!";
+                    }
+            }            
+        </script>
+    </body>
+</html>

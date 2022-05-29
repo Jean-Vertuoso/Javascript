@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Exercício 001 - 999 contando de 0 a 7</title>
+        <style>
+            .formularioExterno{
+                width: 400px;
+                height: 350px;
+                border-radius: 20px;
+                justify-items: center;
+                margin-top: 250px;
+                background-color: aliceblue;
+
+            }
+            
+            h1{
+                font-family: Arial, Helvetica, sans-serif;
+            }
+
+            .botoes{
+                border-radius: 100%;
+                width: 50px;
+                height:50px;
+                margin: 10px;
+                font-size: 30px;
+            }
+
+            .botoes{
+                border-radius: 5px;
+                width: 100px;
+                height: 50px;
+                margin: 10px;
+                font-size: 20px;
+            }
+        </style>
+    </head>
+    <body>
+        <center><form action="" method="get">
+            <center><fieldset class="formularioExterno">
+
+                <!-- Enunciado: Crie um algoritmo que leia a idade de 'n' pessoas, mostrando no final:
+                    a) Qual é a média de idade do grupo
+                    b) Quantas pessoas tem mais de 18 anos
+                    c) Quantas pessoas tem menos de 5 anos
+                    d) Qual foi a maior idade lida -->
+
+                <h1>999 contando de 0 a 7</h1>
+
+                <br><br>
+
+                <textarea name="nmResult" id="idResult" cols="30" rows="5" readonly></textarea>
+
+                <br><br>
+
+                <input class="botoes" type="button" value="Calcular" onclick="contar()">
+
+            </fieldset></center>
+
+        </form></center>
+
+
+        <script>
+            
+            function contar(){
+                
+                let saida = document.getElementById("idResult");
+                let array = [];
+
+                for (i = 0; i < 7; i++){
+
+                    array[i] = 999;  
+                                 
+                }
+
+                saida.value = array.toString();   
+
+            }            
+        </script>
+    </body>
+</html>

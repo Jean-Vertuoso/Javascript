@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Exercício 007 - Ler nomes e mostrar inverso</title>
+        <style>
+            .formularioExterno{
+                width: 400px;
+                height: 400px;
+                border-radius: 20px;
+                justify-items: center;
+                margin-top: 250px;
+                background-color: aliceblue;
+
+            }
+            
+            h1{
+                font-family: Arial, Helvetica, sans-serif;
+            }
+
+            .botoes{
+                border-radius: 100%;
+                width: 50px;
+                height:50px;
+                margin: 10px;
+                font-size: 30px;
+            }
+
+            .botoes{
+                border-radius: 5px;
+                width: 100px;
+                height: 50px;
+                margin: 10px;
+                font-size: 20px;
+            }
+        </style>
+    </head>
+    <body>
+        <center><form action="" method="get">
+            <center><fieldset class="formularioExterno">
+
+                <h1>Ler nomes e mostrar inverso</h1>
+
+                <br>
+
+                <label for="idNomes"><strong>Digite os nomes</strong></label><br>
+                <input type="text" name="nmNomes" id="idNomes">
+
+                <br><br>
+
+                <textarea name="nmResult" id="idResult" cols="30" rows="5" readonly></textarea>
+
+                <br><br>
+
+                <input class="botoes" type="button" value="Gravar" onclick="coletarNomes()">
+
+                <input class="botoes" type="button" value="Mostrar" onclick="mostrarNaTela()">
+
+            </fieldset></center>
+
+        </form></center>
+
+
+        <script>
+
+            var nomes = [];
+            var entrada = document.getElementById("idNomes").value;
+            var saida = document.getElementById("idResult");
+            var armazenaNomes = "";
+
+            function coletarNomes(){
+
+                for (let i = 0; i < 6; i++){
+
+                    armazenaNomes = armazenaNomes + entrada;
+                    nomes[i] = armazenaNomes;
+                    
+                    //nomes.unshift(entrada)
+                console.log(nomes)      
+                
+                }
+
+            }
+
+           // function mostrarNaTela(){     
+
+
+
+           // }
+
+        </script>
+    </body>
+</html>

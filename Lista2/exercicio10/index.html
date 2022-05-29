@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Exercício 010 - Triângulo</title>
+        <style>
+            .formularioExterno{
+                width: 400px;
+                height: 500px;
+                border-radius: 20px;
+                justify-items: center;
+                margin-top: 250px;
+                background-color: aliceblue;
+
+            }
+            
+            h1{
+                font-family: Arial, Helvetica, sans-serif;
+            }
+
+            .botoes{
+                border-radius: 5px;
+                width: 100px;
+                height: 50px;
+                margin: 10px;
+                font-size: 20px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <center><form action="" method="get">
+            <center><fieldset class="formularioExterno">
+
+                <!-- Enunciado: Crie um programa que leia o tamanho de três segmentos de reta. Analise seus comprimentos e diga se é possível formar um triângulo com essas retas. Matematicamente, para três segmentos formarem um triângulo, o comprimento de cada lado deve ser menor que a soma dos outros dois. -->
+
+                <h1>Triângulo</h1>
+
+                <label for="idLadoA"><strong>Lado A?</strong></label><br><br>
+                <input
+                    id="idLadoA"
+                    type="number"
+                    name="nmLadoA"
+                    min="0">
+                
+                <br><br>
+
+                <label for="idLadoB"><strong>Lado B?</strong></label><br><br>
+                <input
+                    id="idLadoB"
+                    type="number"
+                    name="nmLadoB"
+                    min="0">
+                
+                <br><br>
+
+                <label for="idLadoC"><strong>Lado C?</strong></label><br><br>
+                <input
+                    id="idLadoC"
+                    type="number"
+                    name="nmLadoC"
+                    min="0">
+                
+                <br><br>
+
+                <h3>É possível formar o triângulo?</h3>
+                
+                <input
+                    id="idTriangulo"
+                    type="text"
+                    name="nmTriangulo"
+                    readonly>
+                
+                <br><br>
+
+                <input
+                    class="botoes"
+                    type="button"
+                    value="Verificar"
+                    onclick="testarTriangulo()">
+
+            </fieldset></center>
+
+        </form></center>
+
+
+        <script>
+            
+            function testarTriangulo(){
+
+                var ladoA = Number(document.getElementById("idLadoA").value);
+                var ladoB = Number(document.getElementById("idLadoB").value);
+                var ladoC = Number(document.getElementById("idLadoC").value);
+
+                var isTriangulo = true
+
+                if ((ladoA + ladoB) < ladoC){
+                    isTriangulo = false;
+                }
+
+                if ((ladoB + ladoC) < ladoA){
+                    isTriangulo = false;
+                }
+
+                if ((ladoA + ladoC) < ladoB){
+                    isTriangulo = false;
+                }
+
+                if (isTriangulo){
+                    document.getElementById("idTriangulo").value = "É um triângulo";
+                } else{
+                    document.getElementById("idTriangulo").value = "Não é um triângulo";
+                }
+
+            }
+        </script>
+    </body>
+</html>

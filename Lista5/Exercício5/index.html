@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Exercício 005 - Preços</title>
+        <style>
+            .formularioExterno{
+                width: 400px;
+                height: 450px;
+                border-radius: 20px;
+                justify-items: center;
+                margin-top: 250px;
+                background-color: aliceblue;
+            }
+            
+            h1{
+                font-family: Arial, Helvetica, sans-serif;
+            }
+
+            .botoes{
+                border-radius: 100%;
+                width: 50px;
+                height:50px;
+                margin: 10px;
+                font-size: 30px;
+            }
+
+            .botoes{
+                border-radius: 5px;
+                width: 100px;
+                height: 50px;
+                margin: 10px;
+                font-size: 20px;
+            }
+        </style>
+        </style>
+    </head>
+    <body>
+        <center><form action="" method="get">
+            <center><fieldset class="formularioExterno">
+
+                <!-- Crie um aplicativo que leia o preço de 'n' produtos. No final, mostre na tela qual foi o maior e qual foi o menor preço digitados. -->
+
+                <h1>Preços</h1>
+
+                <label for="idQtd"><strong>Quantidade de produtos</strong></label>
+                
+                <br>
+
+                <input
+                    id="idQtd"
+                    type="number"
+                    name="nmQtd">
+
+                <br><br>
+
+                <label for="idPrecos"><strong>Preço dos produtos</strong></label>
+                
+                <br>
+                
+                <input
+                    id="idPrecos"
+                    type="number"
+                    name="nmPrecos">
+
+                <br><br>
+
+                <textarea
+                    id="idSaida"
+                    name="nmSaida"
+                    cols="20"
+                    rows="2"
+                    disabled>
+                </textarea><br>
+
+                <input
+                    class="botoes"
+                    type="button"
+                    value="Mostrar"
+                    onclick="contarProdutos()">
+
+            </fieldset></center>
+
+        </form></center>
+
+
+        <script>
+
+                var menorPreco = 9999999999;
+                var maiorPreco = 0;
+
+            function contarProdutos(){
+                
+                let qtdProdutos = document.querySelector("#idQtd").value;
+                let precoDigitado = document.querySelector("#idPrecos").value;
+                let saida = document.querySelector("#idSaida");
+                let cont = 0;
+
+                while (cont < qtdProdutos){
+                    if (precoDigitado < menorPreco){
+                        menorPreco = precoDigitado;
+                    }
+
+                    if (precoDigitado > maiorPreco){
+                        maiorPreco = precoDigitado;
+                    }
+                    cont++;
+
+                    saida.value = "Menor preço: " + menorPreco + "\n Maior preço: "+ maiorPreco;
+                    }
+                }
+        </script>
+    </body>
+</html>

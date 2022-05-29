@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Exercício 006 - Calculadora</title>
+        <style>
+            .formularioExterno{
+                width: 400px;
+                height: 400px;
+                border-radius: 20px;
+                justify-items: center;
+                margin-top: 250px;
+                background-color: aliceblue;
+
+            }
+            
+            h1{
+                font-family: Arial, Helvetica, sans-serif;
+            }
+
+            .botoes{
+                border-radius: 100%;
+                width: 50px;
+                height:50px;
+                margin: 10px;
+                font-size: 30px;
+            }
+        </style>
+    </head>
+    <body>
+        <center><form action="" method="get">
+            <center><fieldset class="formularioExterno">
+
+                <!-- Enunciado: Construa uma calculadora. O programa deverá receber 2 números e o caractere equivalente a um dos operadores aritméticos. Efetuar a operação aritmética correspondente e apresentar o resultado. -->
+
+                <h1>Calculadora</h1>
+
+                <label for="idNum1"><strong>Primeiro número</strong></label><br>
+                <input
+                    id="idNum1"
+                    type="number"
+                    name="nmNum1"
+                    value="">
+                
+                <br><br>
+
+                <label for="idNum2"><strong>Segundo número</strong></label><br>
+                <input
+                    id="idNum2"
+                    type="number"
+                    name="nmNum2"
+                    value="">
+
+                <br><br>
+
+                <label for="idOp"><strong>Operador</strong></label><br>
+                <input
+                    id="idOp"
+                    type="text"
+                    name="nmOp"
+                    value=""
+                    maxlength="1"
+                    size="1">
+
+                <br><br>
+
+                <label for="idResult"><strong>Resultado</strong></label><br>
+                <input
+                    id="idResult"
+                    type="text"
+                    name="nmResult"
+                    readonly
+                    value=""
+                    size="30">
+
+                <br><br>
+
+                <input
+                    class="botoes"
+                    type="button"
+                    value="="
+                    onclick="calcularNumeros()">
+
+                <input
+                    class="botoes"
+                    type="reset"
+                    value="C">
+
+            </fieldset></center>
+        </form></center>
+
+
+        <script>
+            
+            function calcularNumeros(){
+
+                let num1 = Number(document.getElementById("idNum1").value);
+                let num2 = Number(document.getElementById("idNum2").value);
+                let oper = document.getElementById("idOp").value;
+                let msg = "Operação inválida. Tente novamente!";
+
+                    /*if (oper == "+"){
+                        let soma = num1 + num2;                     
+                        document.getElementById("idResult").value = soma;
+
+                        } else if (oper == "-"){
+                            let subt = num1 - num2;
+                            document.getElementById("idResult").value = subt;
+
+                            } else if (oper == "*"){
+                                let mult = num1 * num2;
+                                document.getElementById("idResult").value = mult;
+
+                                } else if (oper == "/"){
+                                    let divi = num1 / num2;
+                                    document.getElementById("idResult").value = divi;
+
+                        } else {
+                            document.getElementById("idResult").value = msg;
+                    }*/
+
+                switch (document.getElementById("idOp").value){
+                        
+                    case "+":
+                        let soma = num1 + num2;
+                        document.getElementById("idResult").value = soma;
+                    break;
+                    
+                    case "-":
+                        let subt = num1 - num2;
+                        document.getElementById("idResult").value = subt;
+                    break;
+
+                    case "*":
+                        let mult = num1 * num2;
+                        document.getElementById("idResult").value = mult;
+                    break;
+                    
+                    case "/":
+                        let divi = num1 / num2;
+                        document.getElementById("idResult").value = divi;
+                    break;
+
+                default:
+                    document.getElementById("idResult").value = msg;
+                break;
+                }
+            }            
+        </script>
+    </body>
+</html>

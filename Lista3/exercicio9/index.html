@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Exercício 009 - Formas Geométricas</title>
+        <style>
+            .formularioExterno{
+                width: 400px;
+                height: 600px;
+                border-radius: 20px;
+                justify-items: center;
+                margin-top: 150px;
+                background-color: aliceblue;
+
+            }
+            
+            h1{
+                font-family: Arial, Helvetica, sans-serif;
+            }
+
+            .botoes{
+                border-radius: 100%;
+                width: 50px;
+                height:50px;
+                margin: 10px;
+                font-size: 30px;
+            }
+
+            .botoes{
+                border-radius: 5px;
+                width: 100px;
+                height: 50px;
+                margin: 10px;
+                font-size: 20px;
+            }
+
+            #idCirAndTriaEq{
+                display: none;
+            }
+
+            #idRetanOuTrianRet{
+                display: none;
+            }
+
+            #Result{
+                display: none;                
+            }
+
+            label{
+                font-weight: bold;
+            }
+        </style>
+    </head>
+    <body>
+        <center><form action="" method="get">
+            <center><fieldset class="formularioExterno">
+
+                <!-- Enunciado: Crie um programa para calcular a área das formas geométricas básicas:
+                a. Círculo (pedir o raio);
+                b. Retângulo (pedir o tamanho os lados);
+                c. Triangulo retângulo (pedir a base e altura);
+                d. Triangulo Equilátero: pedir o lado.
+
+                O usuário deve poder escolher a forma geométrica que deseja calcular a partir de um menu (radio button, por exemplo). O programa, por sua vez, deverá exibir os lables, caixas de digitação e demais textos explicativos correspondentes a opcão escolhida. -->
+
+            <h1>Formas Geométricas</h1>
+
+                <h2>Qual a forma</h2>
+
+                    <div id="mostrarCirculo">
+                        <label for="idCirc">Círculo</label><br>
+                        <input
+                            id="idCirc"
+                            type="radio"
+                            name="nmForma"
+                            value=""
+                            size="30"
+                            maxlength="10"
+                            onclick="calcularForma()"><br>
+                    </div>
+
+                    <div id="mostrarRetangulo">
+                        <label for="idRetan">Retângulo</label><br>
+                        <input
+                            id="idRetan"
+                            type="radio"
+                            name="nmForma"
+                            value=""
+                            size="30"
+                            maxlength="10"
+                            onchange="calcularForma()"><br>
+                    </div>
+
+                    <div id="mostrarTrianRet">
+                        <label for="idTrianRet">Triângulo Retângulo</label><br>
+                        <input
+                            id="idTrianRet"
+                            type="radio"
+                            name="nmForma"
+                            value=""
+                            size="30"
+                            maxlength="10"
+                            onchange="calcularForma()"><br>
+                    </div>
+
+                    <div id="mostrarTrianEq">
+                        <label for="idTrianEq">Triângulo Equilátero</label><br>
+                        <input
+                            id="idTrianEq"
+                            type="radio"
+                            name="nmForma"
+                            value=""
+                            size="30"
+                            maxlength="10"
+                            onchange="calcularForma()"><br>
+                    </div>
+                
+                <br><br>
+
+                <!------------------------------------------------ Caixas ------------------------------------------------------->
+
+                <div id="idCirAndTriaEq">
+
+                    <label for="idBaseRaioLado" id="idTrocaLabBase">Digite o raio</label><br>
+                    <input
+                        id="idBaseRaioLado"
+                        type="text">
+
+                </div>
+
+                <br>
+
+                <div id="idRetanOuTrianRet">
+
+                    <label for="idLadoOuAltura" id="idTrocaLabAlt">Digite a altura</label><br>
+                    <input
+                        id="idLadoOuAltura"
+                        type="text">
+
+                </div>
+
+                <br><br>
+
+                <div id="Result">
+
+                    <label for="idResultado">Resultado</label><br>
+                        <input
+                            id="idResultado"
+                            type="text"
+                            readonly>
+
+                </div>
+
+                <input
+                    class="botoes"
+                    type="button"
+                    value="Calcular"
+                    onclick="calcularForma()">
+
+            </fieldset></center>
+
+        </form></center>
+
+
+        <script>
+                function calcularForma(){
+                    
+                    let circulo = document.querySelector("#idCirc").checked;
+                    let retangulo = document.querySelector("#idRetan").checked;
+                    let trianRet = document.querySelector("#idTrianRet").checked;
+                    let trianEq = document.querySelector("#idTrianEq").checked;
+                    let baseRaioLado = document.querySelector("#idBaseRaioLado").value;
+                    let ladoAltura = document.querySelector("#idLadoOuAltura").value;
+                    let resultado = document.querySelector("#idResultado");
+
+                    document.querySelector("#Result").style.display = "block";
+
+                    if (circulo){
+                        document.querySelector("#idCirAndTriaEq").style.display = "block";
+                        document.querySelector("#idRetanOuTrianRet").style.display = "none";
+
+                        resultado.value = baseRaioLado * baseRaioLado * Math.PI;
+
+                            } else if (retangulo){
+                                document.querySelector("#idCirAndTriaEq").style.display = "block";
+                                document.querySelector("#idRetanOuTrianRet").style.display = "block";
+
+                                document.querySelector("#idTrocaLabBase").innerText = "Digite a base"
+
+                                resultado.value = baseRaioLado * ladoAltura;
+                                
+                                } else if (trianRet){
+                                    document.querySelector("#idCirAndTriaEq").style.display = "block";
+                                    document.querySelector("#idRetanOuTrianRet").style.display = "block";
+
+                                    resultado.value = (baseRaioLado * ladoAltura)/2;
+
+                                    } else {
+                                        document.querySelector("#idCirAndTriaEq").style.display = "block";
+                                        document.querySelector("#idRetanOuTrianRet").style.display = "none";
+
+                                        document.querySelector("#idTrocaLabBase").innerText = "Digite o tamanho do lado";
+
+                                        resultado.value = ((baseRaioLado * baseRaioLado) * (3 **(1/2)))/4;
+                                    }
+                }
+        </script>
+    </body>
+</html>

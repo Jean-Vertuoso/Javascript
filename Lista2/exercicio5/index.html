@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Exercício 005 - Par ou ímpar</title>
+        <style>
+            .formularioExterno{
+                width: 400px;
+                height: 320px;
+                border-radius: 20px;
+                justify-items: center;
+                margin-top: 250px;
+                background-color: aliceblue;
+
+            }
+            
+            h1{
+                font-family: Arial, Helvetica, sans-serif;
+            }
+
+            .botoes{
+                border-radius: 5px;
+                width: 100px;
+                height: 50px;
+                margin: 10px;
+                font-size: 20px;
+            }
+
+            input{
+                text-align: center;
+                width: 200px;
+            }
+        </style>
+    </head>
+    <body>
+        <center><form action="" method="get">
+            <center><fieldset class="formularioExterno">
+
+                <!-- Enunciado: Elabore um algoritmo que verifica se o número digitado é par ou ímpar.
+                
+                A primeira pergunta que podemos fazer é: Como verifico na vida real se um número e par ou impar? Por exemplo, 2, 4, 5, 10, 17. Certamente você sabe que dentre os números apresentados, 2, 4 e 10 são pares e que 5 e 17 são ímpares. Mas, como você sabe? - Sabemos que um número é par se ele for divisível por 2, ou seja, o resto da divisão por 2 é 0 (zero). Caso contrário, o número é ímpar.-->
+
+                <h1>Par ou ímpar</h1>
+
+                <label for="idNum"><strong>Digite um número</strong></label><br>
+                <input
+                    id="idNum"
+                    type="number"
+                    name="nmNum"
+                    value=""
+                    min="0">
+                
+                <br><br>
+
+                <label for="idResult"><strong>É par ou ímpar</strong></label><br>
+                <input
+                    id="idResult"
+                    type="text"
+                    name="nmResult"
+                    readonly
+                    value="">
+
+                <br><br>
+
+                <input
+                    class="botoes"
+                    type="button"
+                    value="Verificar"
+                    onclick="calcular()">
+
+            </fieldset></center>
+
+        </form></center>
+
+
+        <script>
+            
+            function calcular(){
+
+                var num = Number(document.getElementById("idNum").value);
+
+                if (num % 2 == 0){                    
+                    document.getElementById("idResult").value = "O número é par!";
+                }else{
+                    document.getElementById("idResult").value = "O número é ímpar!";      
+                }
+            }
+        </script>
+    </body>
+</html>

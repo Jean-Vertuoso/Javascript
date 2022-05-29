@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Exercício 007 - Capital do Brasil</title>
+        <style>
+            .formularioExterno{
+                width: 400px;
+                height: 320px;
+                border-radius: 20px;
+                justify-items: center;
+                margin-top: 250px;
+                background-color: aliceblue;
+
+            }
+            
+            h1{
+                font-family: Arial, Helvetica, sans-serif;
+            }
+
+            .botoes{
+                border-radius: 5px;
+                width: 100px;
+                height: 50px;
+                margin: 10px;
+                font-size: 20px;
+            }
+
+            input{
+                text-align: center;
+                width: 200px;
+            }
+        </style>
+    </head>
+    <body>
+        <center><form action="" method="get">
+            <center><fieldset class="formularioExterno">
+
+                <!-- Enunciado: No algoritmo do exemplo anterior, percebe-se que apenas se o aluno digitar Brasília a resposta será correta. Mas, se o aluno digitar brasília com “b” minúsculo? Resolva o exemplo anterior para aceitar tal situação (apenas usando estruturas de seleção). -->
+
+                <h1>Capital do Brasil</h1>
+
+                <label for="idResposta"><strong>Qual é a capital do Brasil?</strong></label><br>
+                <input
+                    id="idResposta"
+                    type="text"
+                    name="nmResposta">
+                
+                <br><br>
+
+                <label for="idAcerto"><strong></strong></label><br>
+                <input
+                    id="idAcerto"
+                    type="text"
+                    name="nmAcerto"
+                    readonly
+                    value="">
+
+                <br><br>
+
+                <input
+                    class="botoes"
+                    type="button"
+                    value="Verificar"
+                    onclick="testarResposta()">
+
+                <input
+                    class="botoes"
+                    type="button"
+                    value="Verificar2"
+                    onclick="testarRespostaUpper()">
+
+            </fieldset></center>
+
+        </form></center>
+
+
+        <script>
+            
+            function testarResposta(){
+
+                var resposta = document.getElementById("idResposta").value;
+                console.log(resposta);
+
+                if (resposta == "Brasília"
+                || resposta == "Brasilia"
+                || resposta == "brasília"
+                || resposta == "brasilia"){                    
+                    document.getElementById("idAcerto").value = "Resposta certa!";
+                }else{
+                    document.getElementById("idAcerto").value = "Resposta errada, tente novamente!";      
+                }
+            }
+
+            function testarRespostaUpper(){
+
+                var resposta = (document.getElementById("idResposta").value).toUpperCase();
+                console.log(resposta);
+
+                if (resposta == "BRASÍLIA"){                    
+                    document.getElementById("idAcerto").value = "Resposta certa!";
+                }else{
+                    document.getElementById("idAcerto").value = "Resposta errada, tente novamente!";      
+                }
+            }
+
+            /* function testarRespostaUpper(){
+
+                var resposta = document.getElementById("idResposta").value;
+                console.log(resposta);
+
+                if (resposta.toUpperCase() == "BRASÍLIA"){                    
+                    document.getElementById("idAcerto").value = "Resposta certa!";
+                }else{
+                    document.getElementById("idAcerto").value = "Resposta errada, tente novamente!";      
+                }
+            }*/
+
+        </script>
+    </body>
+</html>
