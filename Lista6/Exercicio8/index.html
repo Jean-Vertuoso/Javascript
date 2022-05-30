@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Exercício 007 - Ler nomes e mostrar inverso</title>
+        <title>Exercício 008 - Encontrar múltiplos de 10</title>
         <style>
             .formularioExterno{
                 width: 400px;
@@ -41,15 +41,15 @@
         <center><form action="" method="get">
             <center><fieldset class="formularioExterno">
 
-                <h1>Ler nomes e mostrar inverso</h1>
+                <h1>Encontrar múltiplos de 10</h1>
 
                 <br>
 
-                <label for="idNome"><strong>Digite os nomes</strong></label><br>
+                <label for="idNum"><strong>Digite os números</strong></label><br>
                 <input
-                    id="idNome"
-                    type="text"
-                    name="nmNomes">
+                    id="idNum"
+                    type="number"
+                    name="nmNum">
 
                 <br><br>
 
@@ -67,7 +67,7 @@
                     class="botoes"
                     type="button"
                     value="Gravar"
-                    onclick="inserirNomes()">
+                    onclick="guardarNumeros()">
 
                 <input
                     class="botoes"
@@ -82,25 +82,28 @@
 
         <script>
 
-            var nomes = [];
+            var numeros = [];
+            var cont = 0;
+            var multiplos = 0;
             var saida = document.querySelector("#idResult");
-            var armazenaNomes = "";
 
-            function inserirNomes() {
-                let entrada = document.getElementById("idNome").value
-                nomes.push(entrada)
-                document.getElementById("idNome").value = ""
-                console.log(nomes);
-            }
 
-            function mostrarNaTela() {
-                let nomesInvertido = []
-                for (let i = 0; i < nomes.length; i++) {
-                    nomesInvertido.unshift(nomes[i]);
-                    console.log(nomesInvertido);
+                function guardarNumeros() {
+                    let entrada = document.getElementById("idNum").value
+                    numeros.push(entrada)
+                    document.getElementById("idNum").value = ""
+                    console.log(numeros);
                 }
-                saida.value = nomesInvertido;
-            }
+
+                function mostrarNaTela() {
+                    for (let i = 0; i < numeros.length; i++) {
+                        if (numeros[i] % 10 == 0){
+                            multiplos = multiplos + i + ", ";
+                            console.log(multiplos);
+                        }
+                    }
+                    saida.value = "Números guardados: "+ numeros +"\nMúltiplos de 10 estão nas posições: "+ multiplos +"Fim.";
+                }
         </script>
     </body>
 </html>

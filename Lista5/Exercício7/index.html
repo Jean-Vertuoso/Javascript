@@ -75,7 +75,7 @@
 
         var numeroSorteado = parseInt(Math.random() * 11);
         console.log(numeroSorteado);
-        var tentativa = 0;
+        var tentativa = 3;
 
         if (numeroSorteado == 0) {
             numeroSorteado = 1
@@ -86,7 +86,7 @@
                 let numeroApostado = Number(document.querySelector("#idNumero").value);
                 let saida = document.querySelector("#idSaida");
 
-                while(tentativa < 0){
+                while(tentativa > 0){
 
                     if (numeroApostado == numeroSorteado) {
                         saida.value = "Parabéns vc acertou!";
@@ -95,19 +95,19 @@
                     
                         } else if (numeroApostado > numeroSorteado) {
                             saida.value = "O número apostado é maior que sorteado"
-                            tentativa++;
+                            tentativa--;
                             callback();
 
-                            } else if(numeroApostado < numeroSorteado){
+                            } else {
                                 saida.value = "O número apostado é menor que sorteado"
-                                tentativa++;
+                                tentativa--;
                                 callback();
-
-                                    }else{
-                                        saida.value = "Jogo encerrado, você perdeu, mais sorte da próxima vez!"
-                                        document.querySelector("#idNumero").disabled = true;
-                                        break;
-                                    }
+                }
+                if (tentativa == 0){
+                    saida.value = "Jogo encerrado, você perdeu, mais sorte da próxima vez!"
+                    document.querySelector("#idNumero").disabled = true;
+                    break;
+                    }
                 }
             }
         </script>

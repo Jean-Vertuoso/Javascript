@@ -115,6 +115,33 @@
     </head>
     <body>
         <form action="" method="get">
+
+            <!-- Enunciado: 10.  Usando o projeto HTML-L1E5 (Tela de Login) como base, crie um programa para autenticação de usuários.
+
+            - Salve 3 usuários em variáveis pré-inicializadas 
+
+            |  userId   |    senha    |
+            |-----------|:-----------:|
+            | E21Aluno1 |  Trocar123  |
+            | E21Aluno2 |  Senha@123  |
+            | E21Aluno3 |  123Trocar  |
+
+            - Regras
+            -   Se o usuário informar o userId e senha corretamente o sistema deverá exibir a mensagem: 
+
+                **"Acesso Permitido"**
+
+            -   Se o userId não estiver correto, exibir: 
+
+                **"Usuário não cadastrado"**
+
+            -   Se o usuário estiver correto, mas a senha estiver errada, exibir:
+
+                **"Senha incorreta"**
+
+            -   Após 3 tentativas incorretas o programa deverá bloquear os campos senha e usuário e exibir a seguinte mensagem: 
+
+                **"Usuário bloqueado"** -->
             
             <center><fieldset class="corpo">
                 <center><fieldset class="barraTarefa">
@@ -226,30 +253,32 @@
                 let pass3 = "123Trocar";
                 let incUser = "Usuário não cadastrado, você tem";
                 let incPass = "Senha incorreta";
+                let isCorrect = false;
 
-                while (tentativas > 0){
+                do{
+                    if ((tentativas == 1) && isCorrect == false){
+                        document.querySelector("#idUser").disabled = true;
+                        document.querySelector("#idPass").disabled = true;
+                        document.querySelector("#idStatus").value = "Bloqueado";
+                        break;
+                    }
 
-                    if ((inputUser == user1 && inputPass == pass1) || (inputUser == user2 && inputPass == pass2) || (inputUser == user3 && inputPass == pass3)){ document.querySelector("#idStatus").value = "Acesso Permitido";
+                    if ((inputUser == user1 && inputPass == pass1) || (inputUser == user2 && inputPass == pass2) || (inputUser == user3 && inputPass == pass3) && (tentativas != 0)){ document.querySelector("#idStatus").value = "Acesso Permitido";
+                    isCorrect = true;
                     break;
 
                         } else if ((inputUser === user1 && inputPass != pass1) || (inputUser === user2 && inputPass != pass2)|| (inputUser === user3 && inputPass != pass3)){
-                            document.querySelector("#idStatus").value = "Senha incorreta. "+ tentativas + " tentativas restantes!";
+                            document.querySelector("#idStatus").value = "Senha incorreta. "+ (tentativas) + " tentativas restantes!";
                             tentativas = tentativas - 1; 
                             callback();
 
                             } else {
-                                document.querySelector("#idStatus").value = "Usuário não cadastrado. "+ tentativas +" tentativas restantes.";
+                                document.querySelector("#idStatus").value = "Usuário não cadastrado. "+ (tentativas) +" tentativas restantes.";
                                 tentativas = tentativas - 1;
                                 callback();
-                        }                
-                }
-                if (tentativas == 0){
-                    document.querySelector("#idUser").disabled = true;
-                    document.querySelector("#idPass").disabled = true;
-                    document.querySelector("#idStatus").value = "Bloqueado";
-                }
-            }
-                
+                        }           
+                }while (tentativas > 0);                
+            }                
         </script>
     </body>
 </html>
