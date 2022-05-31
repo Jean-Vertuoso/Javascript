@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Exercício 010 - Casa de moeda</title>
+        <style>
+            .formularioExterno{
+                width: 800px;
+                margin-top: 250px;
+                background-color: aliceblue;
+                padding-left: 20px;
+            }
+            
+            #Titulo{
+                text-align: center;
+            }
+
+
+            .Botoes{
+                display: flex;
+                align-items: center;
+
+            }
+
+            .Botao{
+                border-radius: 5px;
+                width: 120px;
+                height: 50px;
+                margin: 10px;
+                font-size: 20px;
+                text-align: center;
+            }
+
+            #Radios{
+                display:flex;
+                align-content: space-around;
+                justify-content: space-around;
+                align-items: center;
+                margin-right:20px;
+                
+            }
+
+            .Valores{
+                margin: 10px;
+            }
+
+            .Resultado input{
+                font-size: 15px;
+                width: 300px;
+                text-align: center;
+            }
+
+            #Real{
+                display:flex;
+                justify-content: center;
+                flex-direction: column;
+                align-items: center;
+                padding: 10px;
+            }
+
+            #DolarAmericano{
+                display:flex;
+                justify-content: center;
+                flex-direction: column;
+                align-items: center;
+                padding: 10px;
+            }
+
+            #Euro{
+                display:flex;
+                justify-content: center;
+                flex-direction: column;
+                align-items: center;
+                padding: 10px;
+            }
+
+            #Libra{
+                display:flex;
+                justify-content: center;
+                flex-direction: column;
+                align-items: center;
+                padding: 10px;
+            }
+
+            #DolarCanadense{
+                display:flex;
+                justify-content: center;
+                flex-direction: column;
+                align-items: center;
+                padding: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <center><form action="" method="get">
+            <center><fieldset class="formularioExterno">
+
+                <!-- Enunciado: Ler uma temperatura em graus Celsius e apresentá-la convertida em graus Fahrenheit. A fórmula de conversão é: F=(9*C+160)/5, sendo F a temperatura em Fahrenheit e C a temperatura em Celsius. -->
+
+                <div id="Titulo">
+                    <h1>Casa de moeda</h1>
+                </div>
+                
+                
+                <div id="Radios">
+                    <label for="idRadio"><strong>Escolha a moeda de entrada: </strong></label>
+                    <div id="Real">
+                        <label for="idRealEnt">Real</label>
+                        <input
+                            id="idRealEnt"
+                            name="nmMoedaEntrada"
+                            type="radio"
+                            onclick="converterMoeda()">
+                    </div>
+
+                    <div id="DolarAmericano">
+                        <label for="idDolarAmerEnt">Dólar Americano</label>
+                        <input
+                            id="idDolarAmerEnt"
+                            name="nmMoedaEntrada"
+                            type="radio"
+                            onclick="converterMoeda()">
+                    </div>
+
+                    <div id="Euro">
+                        <label for="idEuroEnt">Euro</label>
+                        <input
+                            id="idEuroEnt"
+                            name="nmMoedaEntrada"
+                            type="radio"
+                            onclick="converterMoeda()">
+                    </div>
+
+                    <div id="Libra">
+                        <label for="idLibraEnt">Libra Esterlina</label>
+                        <input
+                            id="idLibraEnt"
+                            name="nmMoedaEntrada"
+                            type="radio"
+                            onclick="converterMoeda()">
+                    </div>
+
+                    <div id="DolarCanadense">
+                        <label for="idDolarCanEnt">Dólar Canadense</label>
+                        <input
+                            id="idDolarCanEnt"
+                            name="nmMoedaEntrada"
+                            type="radio"
+                            onclick="converterMoeda()">
+                    </div>
+                </div>
+
+                <br>
+
+                <div class="Valores">
+                    <label for="idValorEntrada"><strong>Digite o valor </strong></label><br>
+                    <input
+                        id="idValorEntrada"
+                        type="number"
+                        name="nmValorEntrada">
+                </div>
+
+                <br>
+
+                <div id="Radios">
+                    <label for="idRadio"><strong>Para qual moeda deseja converter: </strong></label>
+                    <div id="Real">
+                        <label for="idRealConv">Real</label>
+                        <input
+                            id="idRealConv"
+                            name="nmMoedaSaida"
+                            type="radio">
+                    </div>
+
+                    <div id="DolarAmericano">
+                        <label for="idDolarAmerConv">Dólar Americano</label>
+                        <input
+                            id="idDolarAmerConv"
+                            name="nmMoedaSaida"
+                            type="radio">
+                    </div>
+
+                    <div id="Euro">
+                        <label for="idEuroConv">Euro</label>
+                        <input
+                            id="idEuroConv"
+                            name="nmMoedaSaida"
+                            type="radio">
+                    </div>
+
+                    <div id="Libra">
+                        <label for="idLibraConv">Libra Esterlina</label>
+                        <input
+                            id="idLibraConv"
+                            name="nmMoedaSaida"
+                            type="radio">
+                    </div>
+
+                    <div id="DolarCanadense">
+                        <label for="idDolarCanConv">Dólar Canadense</label>
+                        <input
+                            id="idDolarCanConv"
+                            name="nmMoedaSaida"
+                            type="radio">
+                    </div>
+                </div>
+
+                <br><br>
+                
+                <div class="Resultado">
+                    <input
+                        id="idSaida"
+                        type="text"
+                        name="nmSaida"
+                        readonly><br>
+                </div>
+
+                <div class="Botoes"></div>
+                    <input
+                        class="Botao"
+                        type="button"
+                        value="Converter"
+                        onclick="converterMoeda()">
+                </div>
+            </fieldset></center>
+
+        </form></center>
+
+
+        <script>
+
+                
+
+            function converterMoeda(){
+                var rdRealEntrada = document.querySelector("#idRealEnt").checked;
+                var rdDolarAmerEntrada = document.querySelector("#idDolarAmerEnt").checked;
+                var rdEuroEntrada = document.querySelector("#idEuroEnt").checked;
+                var rdLibraEntrada = document.querySelector("#idLibraEnt").checked;
+                var rdDolarCanaEntrada = document.querySelector("#idDolarCanEnt").checked;
+
+                var rdRealConvert = document.querySelector("#idRealConv").checked;
+                var rdDolarAmerConvert = document.querySelector("#idDolarAmerConv").checked;
+                var rdEuroConvert = document.querySelector("#idEuroConv").checked;
+                var rdLibraConvert = document.querySelector("#idLibraConv").checked;
+                var rdDolarCanaConvert = document.querySelector("#idDolarCanConv").checked;
+
+                var real;
+                var dolarAmericano;
+                var euro;
+                var libraEsterlina;
+                var dolarCanadense;
+
+                var valorEntrada = Number(document.querySelector("#idValorEntrada").value);
+                var saida = document.querySelector("#idSaida");
+
+                
+
+                if (rdRealEntrada){
+                    document.querySelector("#idRealConv").disabled = true;
+                    document.querySelector("#idDolarAmerConv").disabled = false;
+                    document.querySelector("#idEuroConv").disabled = false;
+                    document.querySelector("#idLibraConv").disabled = false;
+                    document.querySelector("#idDolarCanConv").disabled = false;
+
+                    if (rdDolarAmerConvert){
+                        dolarAmericano = valorEntrada / 4.754;
+                        saida.value = "O valor de R$"+ valorEntrada.toFixed(2) +" é igual a US$"+ dolarAmericano.toFixed(2);
+
+                        } else if (rdEuroConvert){
+                            euro = valorEntrada / 5.111;
+                            saida.value = "O valor de R$"+ valorEntrada.toFixed(2) +" é igual a €"+ euro.toFixed(2);
+
+                            } else if (rdLibraConvert){
+                                libraEsterlina = valorEntrada / 5.999;
+                                saida.value = "O valor de R$"+ valorEntrada.toFixed(2) +" é igual a £"+ libraEsterlina.toFixed(2);
+                            
+                                } else if (rdDolarCanaConvert){
+                                    dolarCanadense = valorEntrada / 3.7534;
+                                    saida.value = "O valor de R$"+ valorEntrada.toFixed(2) +" é igual a C$"+ dolarCanadense.toFixed(2);}
+                
+                    } else if (rdDolarAmerEntrada){
+                        document.querySelector("#idRealConv").disabled = false;
+                        document.querySelector("#idDolarAmerConv").disabled = true;
+                        document.querySelector("#idEuroConv").disabled = false;
+                        document.querySelector("#idLibraConv").disabled = false;
+                        document.querySelector("#idDolarCanConv").disabled = false;
+
+                        if (rdRealConvert){
+                            real = valorEntrada * 4.754;
+                            saida.value = "O valor de US$"+ valorEntrada.toFixed(2) +" é igual a R$"+ real.toFixed(2);
+
+                            } else if (rdEuroConvert){
+                                euro = valorEntrada * 0.93;
+                                saida.value = "O valor de US$"+ valorEntrada.toFixed(2) +" é igual a €"+ euro.toFixed(2);
+
+                                } else if (rdLibraConvert){
+                                    libraEsterlina = valorEntrada * 0.7925;
+                                    saida.value = "O valor de US$"+ valorEntrada.toFixed(2) +" é igual a £"+ libraEsterlina.toFixed(2);
+                                
+                                    } else if (rdDolarCanaConvert){
+                                        dolarCanadense = valorEntrada * 1.267;
+                                        saida.value = "O valor de US$"+ valorEntrada.toFixed(2) +" é igual a C$"+ dolarCanadense.toFixed(2);}
+
+
+                        } else if (rdEuroEntrada) {
+                            document.querySelector("#idRealConv").disabled = false;
+                            document.querySelector("#idDolarAmerConv").disabled = false;
+                            document.querySelector("#idEuroConv").disabled = true;
+                            document.querySelector("#idLibraConv").disabled = false;
+                            document.querySelector("#idDolarCanConv").disabled = false;
+
+                            if (rdRealConvert){
+                                real = valorEntrada * 5.111;
+                                saida.value = "O valor de €"+ valorEntrada.toFixed(2) +" é igual a R$"+ real.toFixed(2);
+
+                                } else if (rdDolarAmerConvert){
+                                    dolarAmericano = valorEntrada * 1.0756;
+                                    saida.value = "O valor de €"+ valorEntrada.toFixed(2) +" é igual a US$"+ dolarAmericano.toFixed(2);
+
+                                    } else if (rdLibraConvert){
+                                        libraEsterlina = valorEntrada * 0.852;
+                                        saida.value = "O valor de €"+ valorEntrada.toFixed(2) +" é igual a £"+ libraEsterlina.toFixed(2);
+                                    
+                                        } else if (rdDolarCanaConvert){
+                                            dolarCanadense = valorEntrada * 1.362;
+                                            saida.value = "O valor de €"+ valorEntrada.toFixed(2) +" é igual a C$"+ dolarCanadense.toFixed(2);}
+
+                            } else if (rdLibraEntrada) {
+                                document.querySelector("#idRealConv").disabled = false;
+                                document.querySelector("#idDolarAmerConv").disabled = false;
+                                document.querySelector("#idEuroConv").disabled = false;
+                                document.querySelector("#idLibraConv").disabled = true;
+                                document.querySelector("#idDolarCanConv").disabled = false;
+
+                                if (rdRealConvert){
+                                    real = valorEntrada * 5.999;
+                                    saida.value = "O valor de £"+ valorEntrada.toFixed(2) +" é igual a R$"+ real.toFixed(2);
+
+                                    } else if (rdDolarAmerConvert){
+                                        dolarAmericano = valorEntrada * 1.262;
+                                        saida.value = "O valor de £"+ valorEntrada.toFixed(2) +" é igual a US$"+ dolarAmericano.toFixed(2);
+
+                                        } else if (rdEuroConvert){
+                                            euro = valorEntrada * 1.1735;
+                                            saida.value = "O valor de £"+ valorEntrada.toFixed(2) +" é igual a €"+ euro.toFixed(2);
+                                        
+                                            } else if (rdDolarCanaConvert){
+                                                dolarCanadense = valorEntrada * 1.5985;
+                                                saida.value = "O valor de £"+ valorEntrada.toFixed(2) +" é igual a C$"+ dolarCanadense.toFixed(2);}
+
+
+
+                } else {
+                    document.querySelector("#idRealConv").disabled = false;
+                    document.querySelector("#idDolarAmerConv").disabled = false;
+                    document.querySelector("#idEuroConv").disabled = false;
+                    document.querySelector("#idLibraConv").disabled = false;
+                    document.querySelector("#idDolarCanConv").disabled = true;
+
+                        if (rdRealConvert){
+                            real = valorEntrada * 3.7534;
+                            saida.value = "O valor de C$"+ valorEntrada.toFixed(2) +" é igual a R$"+ real.toFixed(2);
+
+                            } else if (rdDolarAmerConvert){
+                                dolarAmericano = valorEntrada * 0.7895;
+                                saida.value = "O valor de C$"+ valorEntrada.toFixed(2) +" é igual a US$"+ dolarAmericano.toFixed(2);
+
+                                } else if (rdEuroConvert){
+                                    euro = valorEntrada * 0.7345;
+                                    saida.value = "O valor de C$"+ valorEntrada.toFixed(2) +" é igual a €"+ euro.toFixed(2);
+                                        
+                                    } else if (rdLibraConvert){
+                                        libraEsterlina = valorEntrada * 0.6254;
+                                        saida.value = "O valor de C$"+ valorEntrada.toFixed(2) +" é igual a £"+ libraEsterlina.toFixed(2);}
+                }
+            }
+        </script>
+    </body>
+</html>

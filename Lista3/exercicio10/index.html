@@ -255,30 +255,33 @@
                 let incPass = "Senha incorreta";
                 let isCorrect = false;
 
-                do{
-                    if ((tentativas == 1) && isCorrect == false){
-                        document.querySelector("#idUser").disabled = true;
-                        document.querySelector("#idPass").disabled = true;
-                        document.querySelector("#idStatus").value = "Bloqueado";
+                while (tentativas != 0){
+                    
+                    if ((inputUser == user1 && inputPass == pass1) || (inputUser == user2 && inputPass == pass2) || (inputUser == user3 && inputPass == pass3) && (tentativas != 0)){ 
+                        document.querySelector("#idStatus").value = "Acesso Permitido";
+                        isCorrect = true;
                         break;
-                    }
-
-                    if ((inputUser == user1 && inputPass == pass1) || (inputUser == user2 && inputPass == pass2) || (inputUser == user3 && inputPass == pass3) && (tentativas != 0)){ document.querySelector("#idStatus").value = "Acesso Permitido";
-                    isCorrect = true;
-                    break;
 
                         } else if ((inputUser === user1 && inputPass != pass1) || (inputUser === user2 && inputPass != pass2)|| (inputUser === user3 && inputPass != pass3)){
                             document.querySelector("#idStatus").value = "Senha incorreta. "+ (tentativas) + " tentativas restantes!";
-                            tentativas = tentativas - 1; 
+                            tentativas --; 
                             callback();
 
                             } else {
                                 document.querySelector("#idStatus").value = "Usuário não cadastrado. "+ (tentativas) +" tentativas restantes.";
-                                tentativas = tentativas - 1;
-                                callback();
-                        }           
-                }while (tentativas > 0);                
-            }                
+                                tentativas --;
+                                callback();}
+                    }
+                    if ((tentativas == 0) && (isCorrect == false)){
+                        document.querySelector("#idUser").disabled = true;
+                        document.querySelector("#idPass").disabled = true;
+                        document.querySelector("#idStatus").value = "Bloqueado";
+
+                        } else {
+                            document.querySelector("#idStatus").value = "Acesso Permitido";
+                        }
+            
+        }           
         </script>
     </body>
 </html>
