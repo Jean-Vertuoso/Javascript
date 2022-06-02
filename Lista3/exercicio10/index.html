@@ -1,122 +1,132 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Exercício 010 - Tela de Login</title>
-        <style>
-            .corpo{
-                width: 330px;
-                border-radius: 8px 8px 0px 0px;
-                height: 420px;
-                margin-top: 15%;
-                padding: 0cm;
-                border: 1;
-                border-color: #245EDF;
-                background-color: rgb(244, 244, 244);
 
-            }
-            .interior{
-                width: 305px;
-                margin-top: 3%;
-                height: 140px;
-                padding: 0cm;
-                border:0
-            }
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 010 - Tela de Login</title>
+    <style>
+        .corpo {
+            width: 330px;
+            border-radius: 8px 8px 0px 0px;
+            height: 420px;
+            margin-top: 15%;
+            padding: 0cm;
+            border: 1;
+            border-color: #245EDF;
+            background-color: rgb(244, 244, 244);
 
-            .interior img{
-                width: 335px;
-            }
-            .barraTarefa{
-                background-color: #86a4e6fa;
-                background-image: linear-gradient( to top, #245EDF, #5583e6fa, #7196e4fa,  #9fb4e2fa);
-                border-radius: 5px 5px 0px 0px ;
-                width:350px;
-                margin: 0cm;
-                padding: 4px;
-                border-top: 0;
-                border-left: 0;
-                border-right: 0;
-                font-family: Arial, Helvetica, sans-serif;
-                color: white;
-                text-align: left;
-                font-size: 16px;
-                border-bottom: thin;
-                border-color: #245EDF;
-            }
-            .labels{
-                font-family: Arial, Helvetica, sans-serif;
-                font-size: 12px;
-                padding: 0px;
-                text-align: left;
-                float: left;
-                margin-left: 15px;
-                width: 50px;
-            }
-            .inputs{
-                float:right;
-                margin-right: 15px;
-            }
-            hr{
-                width: 92%;
-                margin-top: 15px;
-            }
-            #botao1topo{
-                background-color: #5d89e6;
-                background-image: linear-gradient( to button, #245EDF, #5583e6fa, #7196e4fa,  #9fb4e2fa);
-                float: right;
-                border-radius: 4px;
-                border-color: #5d89e6;
-                border: 1;
-                color:white;
-                font-weight: bold;
-                font-size:17px;
-                padding: 0px;
-                margin:0;
-                height:23px;
-                width:23px;
-            }
+        }
 
-            #botao2topo{
-                background-color: #d64545;
-                background-image: linear-gradient( to button, #df2424, #d64545, #d16262,  #9fb4e2fa);
-                float: right;
-                border-radius: 4px;
-                border-color: #d64545;
-                border: 1;
-                color:white;
-                font-weight: bold;
-                font-size:17px;
-                padding: 0px;
-                margin:0;
-                height:23px;
-                width:23px;
-                margin-left: 3px;
-            }
-            .salva{
-                font-family: Arial, Helvetica, sans-serif;
-                font-size: 12px;
-                text-align: left;
-                margin-left: 15px;
-            }
-            .botoesControle{
-                border: 1;
-                border-radius: 4px;
-                background-color: #c2c2c2;
-                background-image: linear-gradient( to top, #a5a5a5, #cacaca, #ececec,  #ffffff);
-                border-color: #c2c2c2;
-                padding: 5px;
-                margin-left: 10px;
-                margin-right: 10px;
+        .interior {
+            width: 305px;
+            margin-top: 3%;
+            height: 140px;
+            padding: 0cm;
+            border: 0
+        }
 
-            }
-        </style>
-    </head>
-    <body>
-        <form action="" method="get">
+        .interior img {
+            width: 335px;
+        }
 
-            <!-- Enunciado: 10.  Usando o projeto HTML-L1E5 (Tela de Login) como base, crie um programa para autenticação de usuários.
+        .barraTarefa {
+            background-color: #86a4e6fa;
+            background-image: linear-gradient(to top, #245EDF, #5583e6fa, #7196e4fa, #9fb4e2fa);
+            border-radius: 5px 5px 0px 0px;
+            width: 350px;
+            margin: 0cm;
+            padding: 4px;
+            border-top: 0;
+            border-left: 0;
+            border-right: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            color: white;
+            text-align: left;
+            font-size: 16px;
+            border-bottom: thin;
+            border-color: #245EDF;
+        }
+
+        .labels {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 12px;
+            padding: 0px;
+            text-align: left;
+            float: left;
+            margin-left: 15px;
+            width: 50px;
+        }
+
+        .inputs {
+            float: right;
+            margin-right: 15px;
+        }
+
+        hr {
+            width: 92%;
+            margin-top: 15px;
+        }
+
+        #botao1topo {
+            background-color: #5d89e6;
+            background-image: linear-gradient(to button, #245EDF, #5583e6fa, #7196e4fa, #9fb4e2fa);
+            float: right;
+            border-radius: 4px;
+            border-color: #5d89e6;
+            border: 1;
+            color: white;
+            font-weight: bold;
+            font-size: 17px;
+            padding: 0px;
+            margin: 0;
+            height: 23px;
+            width: 23px;
+        }
+
+        #botao2topo {
+            background-color: #d64545;
+            background-image: linear-gradient(to button, #df2424, #d64545, #d16262, #9fb4e2fa);
+            float: right;
+            border-radius: 4px;
+            border-color: #d64545;
+            border: 1;
+            color: white;
+            font-weight: bold;
+            font-size: 17px;
+            padding: 0px;
+            margin: 0;
+            height: 23px;
+            width: 23px;
+            margin-left: 3px;
+        }
+
+        .salva {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 12px;
+            text-align: left;
+            margin-left: 15px;
+        }
+
+        .botoesControle {
+            border: 1;
+            border-radius: 4px;
+            background-color: #c2c2c2;
+            background-image: linear-gradient(to top, #a5a5a5, #cacaca, #ececec, #ffffff);
+            border-color: #c2c2c2;
+            padding: 5px;
+            margin-left: 10px;
+            margin-right: 10px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <form action="" method="get">
+
+        <!-- Enunciado: 10.  Usando o projeto HTML-L1E5 (Tela de Login) como base, crie um programa para autenticação de usuários.
 
             - Salve 3 usuários em variáveis pré-inicializadas 
 
@@ -142,26 +152,21 @@
             -   Após 3 tentativas incorretas o programa deverá bloquear os campos senha e usuário e exibir a seguinte mensagem: 
 
                 **"Usuário bloqueado"** -->
-            
-            <center><fieldset class="corpo">
-                <center><fieldset class="barraTarefa">
-                    Tela de Login
-                    <input
-                        id="botao2topo"
-                        type="button"
-                        value="X">
 
-                    <input
-                        id="botao1topo"
-                        type="button"
-                        value="?">
+        <center>
+            <fieldset class="corpo">
+                <center>
+                    <fieldset class="barraTarefa">
+                        Tela de Login
+                        <input id="botao2topo" type="button" value="X">
 
-                </fieldset></center>
-                
+                        <input id="botao1topo" type="button" value="?">
+
+                    </fieldset>
+                </center>
+
                 <fieldset class="interior">
-                    <img
-                        src="assets/ex1.JPG"
-                        alt="conexao">
+                    <img src="assets/ex1.JPG" alt="conexao">
                 </fieldset><br>
 
                 <div class="labels">
@@ -169,13 +174,7 @@
                 </div>
 
                 <div class="inputs">
-                    <input
-                        id="idUser"
-                        type="text"
-                        name="nmUser"
-                        size="30"
-                        autocomplete="on"
-                        value="">
+                    <input id="idUser" type="text" name="nmUser" size="30" autocomplete="on" value="">
                 </div>
 
                 <br><br>
@@ -185,15 +184,8 @@
                 </div>
 
                 <div class="inputs">
-                    <input
-                        id="idPass"
-                        type="password"
-                        name="nmPass"
-                        size="30"
-                        autocomplete="off"
-                        minlength="8"
-                        maxlength="15"
-                        pattern="^(?=.[A-Z])(?=.[a-z])(?=.[0-9])(?=.[@#$])[a-zA-Z0-9@#$]{8,15}$"
+                    <input id="idPass" type="password" name="nmPass" size="30" autocomplete="off" minlength="8"
+                        maxlength="15" pattern="^(?=.[A-Z])(?=.[a-z])(?=.[0-9])(?=.[@#$])[a-zA-Z0-9@#$]{8,15}$"
                         value="">
                 </div>
 
@@ -201,87 +193,65 @@
                 <hr>
 
                 <div class="salva">
-                    <input
-                        type="checkbox"
-                        checked>
+                    <input type="checkbox" checked>
                     <label for="idSalvar">Salvar este nome de usuário e esta senha</label>
                 </div>
 
                 <hr>
 
                 <div>
-                    <input
-                        id="idBtn"
-                        type="button"
-                        value="Login"
-                        class="botoesControle"
-                        onclick="efetuarLogin()">
+                    <input id="idBtn" type="button" value="Login" class="botoesControle" onclick="efetuarLogin()">
 
-                    <input
-                        type="button"
-                        value="Recuperar senha"
-                        class="botoesControle">
+                    <input type="button" value="Recuperar senha" class="botoesControle">
                 </div>
 
                 <br>
 
-                <input
-                    id="idStatus"
-                    type="text"
-                    disabled
-                    size="40"
-                    style="text-align: center;">
+                <input id="idStatus" type="text" disabled size="40" style="text-align: center;">
 
-            </fieldset></center>
-        </form>
+            </fieldset>
+        </center>
+    </form>
 
-        <script>
+    <script>
 
-            var nomeUsuario;
-            var senha
-            var tentativas = 3;
+        var nomeUsuario;
+        var senha
+        var tentativas = 3;
 
-            function efetuarLogin(callback){
+        function efetuarLogin() {
 
-                let inputUser = document.getElementById("idUser").value;
-                let inputPass = document.getElementById("idPass").value;
-                let user1 = "E21Aluno1";
-                let pass1 = "Trocar123";
-                let user2 = "E21Aluno2";
-                let pass2 = "Senha@123";
-                let user3 = "E21Aluno3";
-                let pass3 = "123Trocar";
-                let incUser = "Usuário não cadastrado, você tem";
-                let incPass = "Senha incorreta";
-                let isCorrect = false;
+            let inputUser = document.getElementById("idUser").value;
+            let inputPass = document.getElementById("idPass").value;
+            let user1 = "E21Aluno1";
+            let pass1 = "Trocar123";
+            let user2 = "E21Aluno2";
+            let pass2 = "Senha@123";
+            let user3 = "E21Aluno3";
+            let pass3 = "123Trocar";
+            let incUser = "Usuário não cadastrado, você tem";
+            let incPass = "Senha incorreta";
 
-                while (tentativas != 0){
-                    
-                    if ((inputUser == user1 && inputPass == pass1) || (inputUser == user2 && inputPass == pass2) || (inputUser == user3 && inputPass == pass3) && (tentativas != 0)){ 
-                        document.querySelector("#idStatus").value = "Acesso Permitido";
-                        isCorrect = true;
-                        break;
+                if ((inputUser == user1 && inputPass == pass1) || (inputUser == user2 && inputPass == pass2) || (inputUser == user3 && inputPass == pass3)) {
+                    document.querySelector("#idStatus").value = "Acesso Permitido";
+                    document.querySelector("#idUser").disabled = true;
+                    document.querySelector("#idPass").disabled = true;
 
-                        } else if ((inputUser === user1 && inputPass != pass1) || (inputUser === user2 && inputPass != pass2)|| (inputUser === user3 && inputPass != pass3)){
-                            document.querySelector("#idStatus").value = "Senha incorreta. "+ (tentativas) + " tentativas restantes!";
-                            tentativas --; 
-                            callback();
-
-                            } else {
-                                document.querySelector("#idStatus").value = "Usuário não cadastrado. "+ (tentativas) +" tentativas restantes.";
-                                tentativas --;
-                                callback();}
-                    }
-                    if ((tentativas == 0) && (isCorrect == false)){
-                        document.querySelector("#idUser").disabled = true;
-                        document.querySelector("#idPass").disabled = true;
-                        document.querySelector("#idStatus").value = "Bloqueado";
+                    } else if ((inputUser === user1 && inputPass != pass1) || (inputUser === user2 && inputPass != pass2) || (inputUser === user3 && inputPass != pass3)) {
+                        document.querySelector("#idStatus").value = "Senha incorreta. " + (tentativas - 1) + " tentativas restantes!";
+                        tentativas--;
 
                         } else {
-                            document.querySelector("#idStatus").value = "Acesso Permitido";
-                        }
-            
-        }           
-        </script>
-    </body>
+                            document.querySelector("#idStatus").value = "Usuário não cadastrado. " + (tentativas - 1) + " tentativas restantes!";
+                            tentativas--;
+
+                 }if (tentativas == 0){
+                    document.querySelector("#idUser").disabled = true;
+                    document.querySelector("#idPass").disabled = true;
+                    document.querySelector("#idStatus").value = "Bloqueado";
+                }
+        }
+    </script>
+</body>
+
 </html>

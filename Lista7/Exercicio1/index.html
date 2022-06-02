@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+        <title>Exercício 001 - Média dos alunos</title>
+    </head>
+    <body>
+        <div class="container">
+
+            <div class="box">
+
+                <div id="Titulo">
+                    <h1>Média dos alunos</h1>
+                </div>
+
+                <div id="AjusteDaBox">
+
+                    <div class="CaixaDigitacao">
+                        <label for="idNum">Digite a nota</label>
+                        <input
+                            id="idNum"
+                            type="number"
+                            name="nmNum"
+                            step="0.1"
+                            min="0"
+                            max="10">
+                    </div>
+
+                    <div class="DisplayResultado">
+                        <textarea
+                            id="idResultado"
+                            name="nmResultado"
+                            cols="30"
+                            rows="10"
+                            readonly>
+                        </textarea>
+                    </div>
+
+                </div>
+
+                <div class="CaixaDeBotoes">
+
+                    <div class="Botao">
+                        <input
+                            id="idBotaoGuardar"
+                            type="button"
+                            value="Guardar Nota"
+                            onclick="guardarNotas()">
+                    </div>
+
+                    <div class="Botao">
+                        <input
+                            id="idMostrarResultado"
+                            type="button"
+                            value="Mostrar Resultado"
+                            onclick="mostrarResultado()">
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <script>
+            var cont;
+            var notas = [];
+            var somaNotas = 0;
+            var alunosAcimaMedia = 0;
+            var mediaNotas = 0;
+            var qtdNotas = 0;
+            var maiorNota = -1;
+            var posicoesMaiorNota = "";
+            var saida = document.querySelector("#idResultado");
+
+
+            function guardarNotas(){
+
+                    let entrada = Number(document.querySelector("#idNum").value);
+                    notas.push(entrada)
+                    qtdNotas = notas.length
+                    somaNotas = somaNotas + entrada
+                    mediaNotas = somaNotas / qtdNotas;
+                    document.querySelector("#idNum").value = "";
+                    console.log(qtdNotas)
+                    console.log(somaNotas)
+                    console.log(mediaNotas)
+            }
+
+            function mostrarResultado(){
+                for(let i = 0; i < notas.length; i++){
+                        maiorNota = Math.max(...notas);
+                    if (maiorNota == notas[i]){
+                        posicoesMaiorNota = posicoesMaiorNota + i + ", ";
+                    }
+
+                    if (notas[i] > mediaNotas){
+                        alunosAcimaMedia = alunosAcimaMedia + 1;
+                    }
+                }
+                console.log(notas)
+                console.log(posicoesMaiorNota)
+                saida.value = "Média da turma: "+ mediaNotas.toFixed(2) +"\nQuantos alunos estão acima da média: "+ alunosAcimaMedia +"\nQual foi a maior nota digitada: "+ maiorNota +"\nEm que posições a maior nota aparece: "+ posicoesMaiorNota +" Fim. ";
+            }
+
+        </script>
+    </body>
+</html>
