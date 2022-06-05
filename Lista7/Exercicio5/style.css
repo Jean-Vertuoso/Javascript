@@ -1,0 +1,104 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.container{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.box{
+    display: flex;
+    flex-direction: column;
+    border: solid;
+    border-width: thin;
+    width: 500px;
+    height: 520px;
+    border-radius: 20px;
+    background-color: aliceblue;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+#Titulo{
+    display: block;
+    padding: 20px;
+}
+
+#AjusteDaBox{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    width:400px;
+    align-items: center;
+}
+
+.CaixaDigitacaoTemp{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.CaixaDigitacaoTemp label{
+    font-weight: bold;
+    padding:5px;
+}
+
+#idTemp{
+    width: 100px;
+    height: 25px;
+    font-size: 20px;
+}
+
+.CaixaDigitacaoDia{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.CaixaDigitacaoDia label{
+    font-weight: bold;
+    padding:5px;
+}
+
+#idDia{
+    width: 100px;
+    height: 25px;
+    font-size: 20px;
+}
+
+#Resultado{
+    padding:20px;
+}
+
+#idResultado{
+    padding:5px;    
+    margin-top: 15px;
+    font-weight: bold;
+    font-size: 18px;
+    resize: none;
+}
+
+.CaixaDeBotoes{
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+}
+
+#idBotaoGuardar{
+    width: 150px;
+    height: 50px;
+    font-size: 16px;
+}
+
+#idMostrarResultado{
+    width: 150px;
+    height: 50px;
+    font-size: 16px;
+}
