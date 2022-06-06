@@ -26,11 +26,6 @@
     align-items: center;
 }
 
-#Titulo{
-    display: block;
-    padding: 20px;
-}
-
 #AjusteDaBox{
     display: flex;
     flex-direction: column;
@@ -39,56 +34,67 @@
     align-items: center;
 }
 
-.CaixaDigitacaoTemp{
+#Titulo{
+    display: block;
+    padding: 20px;
+}
+
+.CaixaDigitacao{
     display: flex;
     align-items: center;
     flex-direction: column;
 }
 
-.CaixaDigitacaoTemp label{
+.CaixaDigitacao label{
     font-weight: bold;
+    margin-right: 5px;
     padding:5px;
 }
 
-#idTemp{
-    width: 100px;
+#idNum{
     height: 25px;
     font-size: 20px;
 }
 
-.CaixaDigitacaoDia{
+.CaixaRadios{
     display: flex;
     align-items: center;
+    margin-top: 10px;
+}
+
+.RadioCrescente{
+    display: flex;
     flex-direction: column;
+    align-items: center;
+    padding: 10px;
 }
 
-.CaixaDigitacaoDia label{
-    font-weight: bold;
-    padding:5px;
+.RadioDecrescente{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
 }
 
-#idDia{
-    width: 100px;
-    height: 25px;
+.DisplayResultado{
+    width: 100%;
+}
+
+.DisplayResultado textarea{
+    margin-top: 10px;
+    width: 100%;
+}
+
+#idResultado{    
+    resize:none;
     font-size: 20px;
-}
-
-#Resultado{
-    padding:20px;
-}
-
-#idResultado{
-    padding:5px;    
-    margin-top: 15px;
-    font-weight: bold;
-    font-size: 18px;
-    resize: none;
 }
 
 .CaixaDeBotoes{
     display: flex;
     width: 100%;
-    justify-content: space-around;
+    justify-content: space-between;
+    margin-top: 20px;
 }
 
 #idBotaoGuardar{

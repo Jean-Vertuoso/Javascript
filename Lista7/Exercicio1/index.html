@@ -19,7 +19,7 @@
                 <div id="AjusteDaBox">
 
                     <div class="CaixaDigitacao">
-                        <label for="idNum">Digite a nota</label>
+                        <label for="idNum" id="idLbNota">Digite a 1ª nota</label>
                         <input
                             id="idNum"
                             type="number"
@@ -76,6 +76,7 @@
             var posicoesMaiorNota = "";
             var saida = document.querySelector("#idResultado");
             var cont = 10;
+            var contNota = 2;
 
 
             function guardarNotas(){
@@ -83,18 +84,27 @@
                     let entrada = Number(document.querySelector("#idNum").value); // Captura o conteúdo digitado e joga na variável correspondente; 
                     notas.push(entrada) // Empurra um número pra uma posição do array cada vez que é digitado;
                     qtdNotas = notas.length // Guarda o tamanho da array em uma variável.;
-                    somaNotas = somaNotas + entrada // Soma as notas;
-                    mediaNotas = somaNotas / qtdNotas; // Calcula média;
                     document.querySelector("#idNum").value = ""; //Zera o conteúdo do input cada vez que a função é chamada;
+                    document.querySelector("#idLbNota").innerText = "Digite a "+ contNota +"ª nota"; // Aumenta o número da nota no texto da label toda vez que adiciona uma nova nota;
+                    contNota++;
                     cont--;
                 } 
-                if (notas.length == 10) {
+                if (cont == 0) {
+                    document.querySelector("#idLbNota").innerText = "Digite a 10ª nota";// Repete a label em 10 para não passar para 11, sendo que começa em 0;
+                    document.querySelector("#idNum").disabled = true;// Desabilita a caixa de notas, quando forem guardados 10 notas na array;
                     document.querySelector("#idBotaoGuardar").disabled = true; //Desativa o botão de guardar, quando forem guardados 30 números na array;
                 }
             }
 
             function mostrarResultado(){
+
+                somaNotas = notas.reduce(function (somaNotas, notas){// Função para somar todas os itens da array;
+                    return somaNotas + notas;
+                }, 0);
+                mediaNotas = somaNotas / notas.length;// Operação para calcular a média entre a soma de notas e o tamanho da array;
+                
                 for(let i = 0; i < notas.length; i++){
+
                         maiorNota = Math.max(...notas); // Função para coletar o maior número de uma array;
                     if (maiorNota == notas[i]){ ; //Se a maior nota for igual ao numero de alguma posição da array;
                         posicoesMaiorNota = posicoesMaiorNota + i + ", "; // A variável recebe a posição correspondente da array;

@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="style.css">
-        <title>Exercício 004 - Média de temperaturas</title>
+        <title>Exercício 005 - Ler números e organizá-los</title>
     </head>
     <body>
         <div class="container">
@@ -13,35 +13,42 @@
             <div class="box">
 
                 <div id="Titulo">
-                    <h1>Média de temperaturas</h1>
+                    <h1>Ler números e organizá-los</h1>
                 </div>
 
                 <div id="AjusteDaBox">
 
-                    <div class="CaixaDigitacaoTemp">
-                        <label for="idTemp" id="idLbTemp">Digite a temperatura do 1º dia</label>
+                    <div class="CaixaDigitacao">
+                        <label for="idNum" id="idLbNum">Digite o 1º número</label>
                         <input
-                            id="idTemp"
+                            id="idNum"
                             type="number"
                             name="nmNum"
                             step="0.1"
                             min="0"
-                            max="10"
-                            required>
+                            max="10">
                     </div>
 
-                    <div class="CaixaDigitacaoDia">
-                        <label for="idTempLabel">Digite o dia para mostrar a temperatura</label>
-                        <input
-                            id="idDia"                            
-                            type="number"
-                            name="nmDia"
-                            min="0"
-                            max="30"
-                            required>
-                    </div>
+                    <div class="CaixaRadios">
+                        <div class="RadioCrescente">
+                            <label for="idCrescente">Crescente</label>
+                            <input
+                                id="idCrescente"
+                                type="radio"
+                                name="nmEscolha">
+                        </div>
 
-                    <div class="Resultado">
+                        <div class="RadioDecrescente">
+                            <label for="idDecrescente">Decrescente</label>
+                            <input
+                                id="idDecrescente"
+                                type="radio"
+                                name="nmEscolha">
+                        </div>
+
+                    </div>                    
+
+                    <div class="DisplayResultado">
                         <textarea
                             id="idResultado"
                             name="nmResultado"
@@ -51,24 +58,22 @@
                         </textarea>
                     </div>
 
-                </div>
-
                 <div class="CaixaDeBotoes">
 
                     <div class="Botao">
                         <input
                             id="idBotaoGuardar"
                             type="button"
-                            value="Guardar temp."
-                            onclick="guardarTemperaturas()">
+                            value="Guardar Número"
+                            onclick="guardarNumeros()">
                     </div>
 
                     <div class="Botao">
                         <input
                             id="idMostrarResultado"
                             type="button"
-                            value="Mostrar temp."
-                            onclick="mostrarTemperaturaDia()">
+                            value="Mostrar Resultado"
+                            onclick="mostrarResultado()">
                     </div>
 
                 </div>
@@ -78,56 +83,58 @@
         </div>
 
         <script>
-            
-            var temp = [];
-            var somaTemp = 0;
-            var mediaTemp = 0;
-            var cont = 30;
-            var contDia = 2;
-            var tempNoDia = "";
+            var cont;
+            var numeros = [];
             var saida = document.querySelector("#idResultado");
-            var mensagem;
-            
-            document.querySelector("#idDia").disabled = true; // Inicia desabilitado a caixa de resultado até colocar todas as temperaturas solicitadas;
-            document.querySelector("#idMostrarResultado").disabled = true; // Inicia desabilitado o botão de resultado até colocar todas as temperaturas solicitadas;
+            var cont = 10;
+            var contNota = 2;
+            var crescente = document.querySelector("#idCrescente").checked;
+            var decrescente = document.querySelector("#idDecrescente").checked;
 
-            function guardarTemperaturas(){
+
+            function guardarNumeros(){
                 if (cont != 0){ // Contador para limitar o número de dados gravados
-                    let tempDigitada = Number(document.querySelector("#idTemp").value); // Captura o conteúdo digitado e joga na variável correspondente; 
-                    temp.push(tempDigitada); // Empurra um número pra uma posição do array cada vez que é digitado;
-                    console.log(temp);
-                    document.querySelector("#idTemp").value = ""; //Zera o conteúdo do input cada vez que a função é chamada
-                    document.querySelector("#idLbTemp").innerText = "Digite a temperatura do "+ contDia +"º dia"; // Aumenta os dias no texto da label toda vez que adiciona uma temperatura para cada dia;
-                    contDia++; // Incrementa o contador de dias;
-                    cont--; // Decrementa o contador de espaços da array;
-                }
+                    let entrada = Number(document.querySelector("#idNum").value); // Captura o conteúdo digitado e joga na variável correspondente; 
+                    numeros.push(entrada) // Empurra um número pra uma posição do array cada vez que é digitado;
+                    document.querySelector("#idNum").value = ""; //Zera o conteúdo do input cada vez que a função é chamada;
+                    document.querySelector("#idLbNum").innerText = "Digite o "+ contNota +"ª número"; // Aumenta o número da nota no texto da label toda vez que adiciona uma nova nota;
+                    contNota++;
+                    cont--;
+                } 
                 if (cont == 0) {
-                    document.querySelector("#idBotaoGuardar").disabled = true; //Desativa o botão de guardar temperatura, quando forem guardados 30 números na array;
-                    document.querySelector("#idTemp").disabled = true; // Desabilita a caixa de temperatura, quando forem guardados 30 números na array;
-                    document.querySelector("#idLbTemp").innerText = "Digite a temperatura do 30º dia"; // Repete a label em 30 para não passar para 31, sendo que começa em 0;
-                    document.querySelector("#idDia").disabled = false; //Habilita a caixa do dia quando finalizar de guardar as temperaturas.
-                    document.querySelector("#idMostrarResultado").disabled = false; // Habilita o botão de mostrar o resultado quando finalizar a operação de guardar temp.;
+                    document.querySelector("#idLbNum").innerText = "Digite a 10ª nota";// Repete a label em 10 para não passar para 11, sendo que começa em 0;
+                    document.querySelector("#idNum").disabled = true;// Desabilita a caixa de notas, quando forem guardados 10 notas na array;
+                    document.querySelector("#idBotaoGuardar").disabled = true; //Desativa o botão de guardar, quando forem guardados 30 números na array;
                 }
             }
+                
+            function numerarCrescente(a,b){
+                return a-b;
+            }
 
-            function mostrarTemperaturaDia(){
+            function numerarDecrescente(a,b){
+                return b-a;
+            }
 
-                let diaEscolhido = Number(document.querySelector("#idDia").value);
-                somaTemp = temp.reduce(function (somaTemp, temp){
-                    return somaTemp + temp;
-                }, 0);
-                mediaTemp = somaTemp / temp.length;
+            function mostrarResultado(){
+                for (let i = 0; i < numeros.length; i++) {
+                    if (numeros[i] > numeros[i]){
+                        
 
-                    for(let i = 0;i < temp.length; i++){
-                        if ((diaEscolhido - 1) == i){
-                            if (temp[i] > mediaTemp){
-                                mensagem = "A temperatura do dia "+ diaEscolhido +" estava acima da média";
-                            } else {
-                                mensagem = "A temperatura do dia "+ diaEscolhido +" estava abaixo da média";
-                            }
-                        }
-                    }               
-                saida.value = "Média das temperaturas: "+ mediaTemp.toFixed(1) +"ºC.\n"+ mensagem +"."
+                    }
+                }
+
+
+
+
+
+                if (crescente){
+                    numeros.map(numerarCrescente);
+                    saida.value = "aRRRAY"+ numeros;
+                } else{
+                    numeros.sort(numerarDecrescente);
+                    saida.value = "aRRRAY"+ numeros;
+                }
             }
         </script>
     </body>
