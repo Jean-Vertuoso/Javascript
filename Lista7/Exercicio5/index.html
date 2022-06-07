@@ -88,9 +88,6 @@
             var saida = document.querySelector("#idResultado");
             var cont = 10;
             var contNota = 2;
-            var crescente = document.querySelector("#idCrescente").checked;
-            var decrescente = document.querySelector("#idDecrescente").checked;
-
 
             function guardarNumeros(){
                 if (cont != 0){ // Contador para limitar o número de dados gravados
@@ -98,42 +95,31 @@
                     numeros.push(entrada) // Empurra um número pra uma posição do array cada vez que é digitado;
                     document.querySelector("#idNum").value = ""; //Zera o conteúdo do input cada vez que a função é chamada;
                     document.querySelector("#idLbNum").innerText = "Digite o "+ contNota +"ª número"; // Aumenta o número da nota no texto da label toda vez que adiciona uma nova nota;
-                    contNota++;
-                    cont--;
+                    contNota++;// Incrementa o contador da ordem da nota do label;
+                    cont--;// Decrementa contador de condição;
                 } 
                 if (cont == 0) {
                     document.querySelector("#idLbNum").innerText = "Digite a 10ª nota";// Repete a label em 10 para não passar para 11, sendo que começa em 0;
                     document.querySelector("#idNum").disabled = true;// Desabilita a caixa de notas, quando forem guardados 10 notas na array;
                     document.querySelector("#idBotaoGuardar").disabled = true; //Desativa o botão de guardar, quando forem guardados 30 números na array;
                 }
-            }
-                
-            function numerarCrescente(a,b){
-                return a-b;
-            }
+            }            
+            
+            function mostrarResultado(){          
 
-            function numerarDecrescente(a,b){
-                return b-a;
-            }
+                let crescente = document.querySelector("#idCrescente").checked; 
+                let decrescente = document.querySelector("#idDecrescente").checked;
 
-            function mostrarResultado(){
-                for (let i = 0; i < numeros.length; i++) {
-                    if (numeros[i] > numeros[i]){
-                        
-
-                    }
-                }
-
-
-
-
-
-                if (crescente){
-                    numeros.map(numerarCrescente);
-                    saida.value = "aRRRAY"+ numeros;
-                } else{
-                    numeros.sort(numerarDecrescente);
-                    saida.value = "aRRRAY"+ numeros;
+                if (crescente){ // Se o radio button de crescente estiver checado;
+                    numeros.sort(function (a,b){// É feita a função de organizar por ordem crescente;
+                        return a-b;// Esse retorno é para evitar que caso tenha um número com dezena, este número não fique na frente dos números apenas com unidades. (Ex: 1, 10, 2, 3...)
+                    });
+                    saida.value = "Notas em ordem crescente: "+ numeros;// Apresenta o resultado
+                } else {
+                    numeros.reverse(function (a,b){// É feita a função de organizar por ordem decrescente;
+                        return b-a; // Esse retorno é para evitar que caso tenha um número com dezena, este número não fique atrás dos números apenas com unidades. (Ex:...4, 3, 2, 10, 10, 1)
+                    });
+                    saida.value = "Notas em ordem decrescente: "+ numeros;// Apresenta o resultado;
                 }
             }
         </script>

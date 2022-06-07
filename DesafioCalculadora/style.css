@@ -17,7 +17,7 @@
 .calculadoraExterior{
     display:flex; 
     flex-direction: column;
-    background-color: rgb(192, 192, 192);
+    background-color: rgb(192, 192, 192, 0.5);
     border: solid;
     border-width: thin;
     border-color: black;

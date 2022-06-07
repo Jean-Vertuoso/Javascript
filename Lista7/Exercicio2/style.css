@@ -72,6 +72,10 @@
 .DisplayResultado textarea{
     margin-top: 30px;
     width: 100%;
+    text-align: center;
+    word-spacing: 50px;
+    word-wrap: break-word;
+    text-justify: auto;
 }
 
 #idResultado{    

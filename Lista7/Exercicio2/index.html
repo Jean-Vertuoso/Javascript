@@ -77,8 +77,10 @@
 
             var nomes = [];
             var idades = [];
-            var nomeDaPessoa = "";
-            var idadeDaPessoa = "";
+            var posicoesMenores = [];
+            var listaNomes = [];
+            var listaIdades = [];
+            var newArray = [];
             var saida = document.querySelector("#idResultado");
             var cont = 9;
 
@@ -101,41 +103,26 @@
                 }
 
             function mostrarMenorIdades(){
-                for (let i = 0; i < nomes.length; i++){
-                    for(let ind = 0; ind < idades.length; ind++){
-                        if ((nomes[i] == idades[ind]) && (idades[ind] < 18)){
-                            nomeDaPessoa = nomeDaPessoa + nomes[i]
-                            idadeDaPessoa = idadeDaPessoa + idades[ind];
-                            console.log(nomeDaPessoa)
-                            console.log(idadeDaPessoa)
-
-                        }
+                for (let i = 0; i < idades.length; i++){
+                    if (idades[i] < 18){
+                        listaIdades.push(idades[i])
+                        posicoesMenores.push(i)                            
                     }
-                }
-                saida.value = "Nome: "+nomeDaPessoa+"Idade: "+idadeDaPessoa;
-            }
-            
-            /*var temp = [];
-            var somaTemp = 0;
-            var mediaTemp = 0;
-            var cont = 30;
-            var contDia = 2;
 
-            function guardarTemperaturas(){
-                if (cont > 0){ // Contador para limitar o número de dados gravados
-                    let tempDigitada = Number(document.querySelector("#idTemp").value); // Captura o conteúdo digitado e joga na variável correspondente; 
-                    temp.push(tempDigitada); // Empurra um número pra uma posição do array cada vez que é digitado;
-                    mediaTemp = somaTemp / 30; // Calcula média
-                    console.log(temp);
-                    document.querySelector("#idTemp").value = ""; //Zera o conteúdo do input cada vez que a função é chamada
-                    document.getElementById("idTempLabel").textContent = "Digite a temperatura do"+ contDia +"º dia"; 
-                    contDia++;
-                    cont--;
                 }
-                if (temp.length == 30) {
-                    document.querySelector("#idBotaoGuardar").disabled = true; //Desativa o botão de guardar, quando forem guardados 30 números na array.
+                for(let ind = 0; ind < nomes.length; ind++){
+                    for(let i = 0; i < posicoesMenores.length; i++){
+                        if (ind == posicoesMenores[i]){
+                            listaNomes.push(nomes[ind])
+                        }
+                    }                           
                 }
-                }*/
+                console.log(posicoesMenores)
+                console.log(listaNomes)
+                console.log(listaIdades)
+
+                saida.value = "Nome: Idade:\n"+listaNomes+listaIdades
+            }
         </script>
     </body>
 </html>
