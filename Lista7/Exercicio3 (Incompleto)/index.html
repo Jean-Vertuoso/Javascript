@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+        <title>Exercício 003 - Funcionários e salários</title>
+    </head>
+    <body>
+
+        <form action="" method="get">
+
+            <div class="container">
+
+                <div class="box">
+
+                    <div id="Titulo">
+                        <h1>Nome, sexo e salário de 5 funcionários</h1>
+                    </div>
+
+                    <div id="AjusteDaBox">
+
+                        <div class="CaixaDigitacao">
+                            <label for="idNome" id="idLbNome">Digite o nome da 1ª pessoa</label>
+                            <input
+                                id="idNome"
+                                type="text"
+                                name="nmNome"
+                                step="0.1"
+                                min="0"
+                                max="10">
+                        </div>
+
+                        <div class="CaixaRadios">
+
+                            <div class="RadioMasculino">
+                                <label for="idMasculino">Masculino</label>
+                                <input
+                                    id="idMasculino"
+                                    type="radio"
+                                    name="nmGenero"
+                                    value="Masculino"
+                                    checked>
+                            </div>
+    
+                            <div class="RadioFeminino">
+                                <label for="idFeminino">Feminino</label>
+                                <input
+                                    id="idFeminino"
+                                    type="radio"
+                                    name="nmGenero"
+                                    value="Feminino">
+                            </div>
+    
+                        </div>   
+
+                        <div class="CaixaDigitacao">
+                            <label for="idSalario" id="idLbSalario">Digite o salário da 1ª pessoa</label>
+                            <input
+                                id="idSalario"
+                                type="number"
+                                name="nmSalario">
+                        </div>
+
+                       <!-- <div class="DisplayResultado">
+                            <textarea
+                                id="idResultado"
+                                name="nmResultado"
+                                cols="30"
+                                rows="10"
+                                readonly>
+                            </textarea>
+                        </div>-->
+
+                    </div>
+
+                    <div class="CaixaDeBotoes">
+
+                        <div class="Botao">
+                            <input
+                                id="idBotaoGuardar"
+                                type="button"
+                                value="Guardar Informações"
+                                onclick="guardarInformacoes()">
+                        </div>
+
+                        <div class="Botao">
+                            <input
+                                id="idMostrarResultado"
+                                type="button"
+                                value="Mostrar Informações"
+                                onclick="mostrarInformacoes()">
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        
+        </form>
+
+        <script>
+
+            var nomes = [];
+            var genero = [];
+            var salario = [];
+            var saida = document.getElementById("idResultado");
+            var cont = 5;
+            var contSalario = 2;
+
+            function guardarInformacoes(){
+                if (cont > 0){ // Contador para limitar o número de dados gravados
+                    let entradaNome = document.getElementById("idNome").value; // Captura o conteúdo digitado e joga na variável correspondente;
+                    let escolhaGenero = document.querySelector('input[name=nmGenero]:checked').value;
+                    let entradaSalario = Number(document.getElementById("idSalario").value); // Captura o conteúdo digitado e joga na variável correspondente;
+                    nomes.push(entradaNome);// Empurra um número pra uma posição do array cada vez que é digitado;
+                    genero.push(escolhaGenero);
+                    salario.push(entradaSalario); // Empurra um número pra uma posição do array cada vez que é digitado;
+                    console.log(nomes);
+                    console.log(genero);
+                    console.log(salario);
+                    document.getElementById("idNome").value = ""; //Zera o conteúdo do input cada vez que a função é chamada
+                    document.getElementById("idSalario").value = ""; //Zera o conteúdo do input cada vez que a função é chamada1ª pessoa
+                    document.getElementById("idLbNome").innerText = "Digite o nome da "+ contSalario +"ª pessoa";
+                    document.getElementById("idLbSalario").innerText = "Digite o salário da "+ contSalario +"ª pessoa"; 
+                    contSalario++;
+                    cont--;
+                }
+                    if (salario.length == 5) {
+                        document.getElementById("idBotaoGuardar").disabled = true; //Desativa o botão de guardar, quando forem guardados 30 números na array.
+                        document.getElementById("idNome").disabled = true; //Desativa o botão de guardar, quando forem guardados 30 números na array.
+                        document.getElementById("idSalario").disabled = true; //Desativa o botão de guardar, quando forem guardados 30 números na array.
+                        document.getElementById("idLbNome").innerText = "Digite o nome da 5ª pessoa";// Repete a label em 10 para não passar para 11, sendo que começa em 0;
+                        document.getElementById("idLbSalario").innerText = "Digite o salário da 5ª pessoa";// Repete a label em 10 para não passar para 11, sendo que começa em 0;
+
+                    }
+                }
+
+            function consistirNome(nome) {
+                if (nome == "" || nome == " ") {
+                    saida.value = "Preenchimento obrigatório: Campo Nome"
+                    saida.classList.add("alerta")
+                    document.getElementById("idNome").focus()
+                    return false
+                }
+                return true 
+            }
+
+
+            function consistirIdade(idade) {
+                if (idade < 0 || idade > 130 || idade == "") {
+                    saida.value = "Idade inválida"
+                    saida.classList.add("alerta")
+                    document.getElementById("idNome").focus()
+                    return false
+                } 
+                return true 
+            }
+
+            function mostrarInformacoes(){
+                for (let i = 0; i < idades.length; i++){
+                    if (genero[i] == "Feminino"){
+                        listaIdades.push(idades[i])
+                        posicoesMenores.push(i)                            
+                    }
+
+                }
+                for(let i = 0; i < nomes.length; i++){
+                    for(let i = 0; i < posicoesMenores.length; i++){
+                        if (i == posicoesMenores[i]){
+                            listaNomes.push(nomes[i])
+                        }
+                    }                           
+                }
+                console.log(posicoesMenores)
+                console.log(listaNomes)
+                console.log(listaIdades)
+
+                saida.value = "Nome: Idade:\n"+listaNomes+listaIdades
+            }
+        </script>
+    </body>
+</html>
