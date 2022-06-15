@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+        <title>Integração API</title>
+    </head>
+    <body>
+        <div class="container">
+
+            <div class="box">
+
+                <div id="Titulo">
+                    <h1>Cotação</h1>
+                </div>
+
+                <div id="AjusteDaBox">
+
+                    <div class="CaixaDigitacao">
+
+                        <label for="Moeda">Digite o nome da moeda</label>
+                            <select id="Moeda" name="nmMoeda">
+                                <option value="AUD" selected>Dólar australiano</option>
+                                <option value="CAD">Dólar canadense</option>
+                                <option value="CHF">Franco suíço</option>
+                                <option value="DKK">Coroa dinamarquesa</option>
+                                <option value="EUR">Euro</option>
+                                <option value="GBP">Libra Esterlina</option>                                
+                                <option value="JPY">Iene</option>
+                                <option value="NOK">Coroa norueguesa</option>
+                                <option value="SEK">Coroa sueca</option>
+                                <option value="USD">Dólar</option>
+                            </select>
+
+                        <label for="Data">Digite a data da cotação</label>
+                        <input
+                            id="Data"
+                            name="nmData"
+                            type="text"
+                            placeholder="mm-dd-aaaa">
+                        
+                    </div>
+
+                </div>
+
+                <div class="CaixaDeBotoes">
+
+                    <div class="Botao">
+                        <input
+                            id="BotaoMostrar"
+                            type="button"
+                            value="Mostrar Informações"
+                            onclick="mostrarInfo()">
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <script>
+
+            var botaoBuscarInfo = document.getElementById("BotaoMostrar");
+
+            botaoBuscarInfo.onclick = function(){
+                let moeda = document.getElementById("Moeda").value;
+                let data = document.getElementById("Data").value;
+                buscarInfo(moeda, data)
+            }
+
+
+
+            function buscarInfo(moeda, data) {
+
+                var xhr = new XMLHttpRequest(); 
+
+                xhr.open("GET", "https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/CotacaoMoedaDia(moeda=@moeda,dataCotacao=@dataCotacao)?@moeda='" +moeda+ "'&@dataCotacao='" +data+ "'&$top=100&$format=json&$select=paridadeCompra,paridadeVenda,cotacaoCompra,cotacaoVenda,dataHoraCotacao,tipoBoletim")
+
+
+                //https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/CotacaoMoedaDia(moeda=@moeda,dataCotacao=@dataCotacao)?@moeda='EUR'&@dataCotacao='06-14-2022'&$top=100&$format=json&$select=paridadeCompra,paridadeVenda,cotacaoCompra,cotacaoVenda,dataHoraCotacao,tipoBoletim
+                xhr.addEventListener("load", function(){
+                    var resposta = xhr.responseText;
+                    mostrarInformacoes(resposta)
+
+                    var objetos = JSON.parse(resposta);
+                    //console.log(objeto)
+
+                    objetos.forEach(objeto => console.log(objeto));
+                })
+                
+                xhr.send()
+
+            }
+
+            function mostrarInformacoes(params) {
+                console.log(params);
+            }
+            
+
+            //Transforma um objeto JS em JSON 
+
+        </script>
+    </body>
+</html>
