@@ -86,9 +86,11 @@
                     mostrarInformacoes(resposta)
 
                     var objetos = JSON.parse(resposta);
-                    //console.log(objeto)
+                    console.log(objetos)
 
-                    objetos.forEach(objeto => console.log(objeto));
+                    objetos.forEach(element => {
+                        console.log(element)
+                    });
                 })
                 
                 xhr.send()
