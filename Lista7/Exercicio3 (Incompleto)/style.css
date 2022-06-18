@@ -19,7 +19,7 @@
     border: solid;
     border-width: thin;
     width: 700px;
-    height: 600px;
+    height: 700px;
     border-radius: 20px;
     background-color: aliceblue;
     justify-content: flex-start;
@@ -104,6 +104,10 @@
     font-size: 16px;
 }
 
+.CaixaDeStatus{
+    margin-bottom: 30px;
+}
+
 #idStatus{    
     font-weight: bold;
     width: 320px;
@@ -111,6 +115,16 @@
     font-size: 15px;
     margin-top: 50px;
     text-align: center;
+}
+
+.CaixaResultado{
+    margin:30px;
+}
+
+#idResultado{
+    font-weight: bold;
+    font-size: 15px;
+    resize: none;
 }
 
 .alerta{

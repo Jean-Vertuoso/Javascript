@@ -69,7 +69,17 @@
 
                         </div>
 
-                    </div>
+                        <div class="CaixaDeStatus">
+
+                            <input
+                                id="idStatus"
+                                name="nmStatus"
+                                type="text"
+                                readonly>
+
+                        </div>
+
+                    </div>                    
 
                     <div class="CaixaDeBotoes">
 
@@ -91,14 +101,16 @@
 
                     </div>
 
-                    <div class="CaixaDeStatus">
+                    <div class="CaixaResultado">
 
                         <div>
-                            <input
-                                id="idStatus"
-                                name="nmStatus"
-                                type="text"
+                            <textarea
+                                id="idResultado"
+                                name="nmResultado"
+                                cols="40"
+                                rows="5"
                                 readonly>
+                            </textarea>
                         </div>
 
                     </div>
@@ -117,6 +129,7 @@
             var generos = [];
             var salarios= [];
             var saida;
+            var resultado;
             var botaoGuardar;
             var botaoMostrar;
             var cont = 5;
@@ -153,9 +166,6 @@
                     nomes.push(entradaNome);
                     generos.push(escolhaGenero);
                     salarios.push(entradaSalario);
-                    console.log(nomes)
-                    console.log(generos)
-                    console.log(salarios)
                     contSalario++;
                     cont--;                    
                     saida.value = "Cadastro Realizado com sucesso!"
@@ -205,7 +215,8 @@
 
                 botaoGuardar = document.getElementById("idBotaoGuardar");
                 botaoMostrar = document.getElementById("idMostrarResultado");
-                saida = document.getElementById("idStatus");
+                status = document.getElementById("idStatus");
+                resultado = document.getElementById("idResultado");
                 limparTelas();
 
             }
@@ -260,7 +271,15 @@
 
             botaoMostrar.onclick = function() {
 
-                let 
+                let salariosFiltrados = limitarSalario(5000);
+
+                resultado.value = "Mulheres com salários acima dos R$5.000,00:"
+
+                salariosFiltrados.forEach(e =>{
+                    if(){
+                        
+                    }
+                })
 
 
             }
