@@ -128,7 +128,7 @@
             var nomes = [];
             var generos = [];
             var salarios= [];
-            var saida;
+            var aviso;
             var resultado;
             var botaoGuardar;
             var botaoMostrar;
@@ -166,11 +166,14 @@
                     nomes.push(entradaNome);
                     generos.push(escolhaGenero);
                     salarios.push(entradaSalario);
+                    console.log(nomes);
+                    console.log(generos);
+                    console.log(salarios);
                     contSalario++;
                     cont--;                    
-                    saida.value = "Cadastro Realizado com sucesso!"
-                    aumentarLabels()
-                    limparTelas()
+                    aviso.value = "Cadastro Realizado com sucesso!";
+                    aumentarLabels();
+                    limparTelas();
                     
                 }
                     
@@ -178,7 +181,7 @@
                 if (contSalario == 5) {
 
                     travarCaixas();
-                    console.log(contSalario)
+                    console.log(contSalario);
 
                 }
             }
@@ -215,7 +218,7 @@
 
                 botaoGuardar = document.getElementById("idBotaoGuardar");
                 botaoMostrar = document.getElementById("idMostrarResultado");
-                status = document.getElementById("idStatus");
+                aviso = document.getElementById("idStatus");
                 resultado = document.getElementById("idResultado");
                 limparTelas();
 
@@ -230,23 +233,23 @@
 
                 if (nome == "" || nome == " ") {
 
-                    saida.value = "Preenchimento obrigatório: Campo Nome"
-                    saida.classList.add("alerta")
-                    document.getElementById("idNome").focus()                    
-                    return false
+                    aviso.value = "Preenchimento obrigatório: Campo Nome";
+                    aviso.classList.add("alerta");
+                    document.getElementById("idNome").focus();                  
+                    return false;
 
                 }
 
                 if (salario == "" || salario == " ") {
 
-                    saida.value = "Preenchimento obrigatório: Campo Salário"
-                    saida.classList.add("alerta")
-                    document.getElementById("idSalario").focus()
-                    return false
+                    aviso.value = "Preenchimento obrigatório: Campo Salário";
+                    aviso.classList.add("alerta");
+                    document.getElementById("idSalario").focus();
+                    return false;
 
                 }
 
-                saida.classList.remove("alerta")
+                aviso.classList.remove("alerta");
                 return true;
 
             }
@@ -254,11 +257,12 @@
             //------------------------------------------------------------- \\ Função filtrar salários // -------------------------------------------------------------------\\
 
             function limitarSalario(limiteSalario){
+                let salariosFiltrados = [];
 
                 salarios.forEach(function(salario,index) {
 
                     if (salario > limiteSalario ) {
-                        salariosFiltrados.push(index)
+                        salariosFiltrados.push(index);
                     }
 
                 });
@@ -273,17 +277,16 @@
 
                 let salariosFiltrados = limitarSalario(5000);
 
-                resultado.value = "Mulheres com salários acima dos R$5.000,00:"
+                resultado.value = "Mulheres com salários acima dos R$5.000,00:";
 
                 salariosFiltrados.forEach(e =>{
-                    if(){
-                        
+                    if(generos[e] == "Feminino"){
+                        resultado.value = resultado.value + "("+ nomes[e] + ": R$"+ salarios[e] +")";
+                    } else {
+                        resultado.value = "Não há funcionárias do sexo Feminino!"
                     }
                 })
-
-
             }
-
 
         </script>
     </body>
