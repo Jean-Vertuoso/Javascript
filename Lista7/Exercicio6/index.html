@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+        <title>Exercício 003 - Funcionários e salários</title>
+    </head>
+    <body>
+
+        <form action="" method="get">
+
+            <div class="container1">
+
+                <div class="box1">
+
+                    <div id="Titulo">
+                        <h1>Cadastro aluno e notas</h1>
+                    </div>
+
+                    <div id="AjusteDaBox1">
+
+                        <div class="CaixaDigitacao">
+
+                            <label for="idAluno" id="idLbAluno">Digite o nome da 1ª pessoa</label>
+                            <input
+                                id="idAluno"
+                                type="text"
+                                name="nmAluno">
+                                
+                        </div>
+
+                        <div class="CaixaDigitacao">
+
+                            <label for="idEndereco" id="idLbEndereco">Digite o endereço da 1ª pessoa</label>
+                            <input
+                                id="idEndereco"
+                                type="text"
+                                name="nmEndereco">
+
+                        </div>
+
+                        <div class="CaixaDigitacao">
+
+                            <label for="idNomeMae" id="idLbNomeMae">Digite o nome da mãe da 1ª pessoa</label>
+                            <input
+                                id="idNomeMae"
+                                name="nmNomeMae"
+                                type="text">
+
+                        </div>
+
+                        <div class="CaixaDigitacao">
+
+                            <label for="idNomePai" id="idLbNomePai">Digite o nome do pai da 1ª pessoa</label>
+                            <input
+                                id="idNomePai"
+                                name="nmNomePai"
+                                type="text">
+
+                        </div>
+
+                        <div class="CaixaDigitacao">
+
+                            <label for="idTelefonePais" id="idLbTelefonePais">Digite o telefone dos pais da 1ª pessoa</label>
+                            <input
+                                id="idTelefonePais"
+                                name="nmTelefonePais"
+                                type="tel"
+                                maxlength="13">
+
+                        </div>
+
+                        <div class="CaixaNotas">
+
+                            <label for="idPrimeiraNota" id="idLbPrimeiraNota">Digite a primeira nota da 1ª pessoa</label>
+                            <input
+                                id="idPrimeiraNota"
+                                name="nmPrimeiraNota"
+                                type="number"
+                                min="0"
+                                max="10"
+                                step="0.1">
+
+                        </div>
+
+                        <div class="CaixaNotas">
+
+                            <label for="idSegundaNota" id="idLbSegundaNota">Digite a segunda nota da 1ª pessoa</label>
+                            <input
+                                id="idSegundaNota"
+                                name="nmSegundaNota"
+                                type="number"
+                                min="0"
+                                max="10"
+                                step="0.1">
+
+                        </div>
+
+                        <div class="CaixaNotas">
+
+                            <label for="idTerceiraNota" id="idLbTerceiraNota">Digite a terceira nota da 1ª pessoa</label>
+                            <input
+                                id="idTerceiraNota"
+                                name="nmTerceiraNota"
+                                type="number"
+                                min="0"
+                                max="10"
+                                step="0.1">
+
+                        </div>
+
+                        <div class="CaixaNotas">
+
+                            <label for="idQuartaNota" id="idLbQuartaNota">Digite a quarta nota da 1ª pessoa</label>
+                            <input
+                                id="idQuartaNota"
+                                name="nmQuartaNota"
+                                type="number"
+                                min="0"
+                                max="10"
+                                step="0.1">
+
+                        </div>
+
+                    </div>
+                    
+                    <div class="CaixaDeBotoes">
+                    
+                        <div class="Botao">
+                            <input
+                                id="idBotoesEsquerda"
+                                type="button"
+                                value="Guardar Informações"
+                                onclick="guardarInformacoes()">
+                        </div>
+
+                        <div class="Botao">
+                            <input
+                                id="idBotoesEsquerda"
+                                type="button"
+                                value="Finalizar"
+                                onclick="finalizarQuestionario()">
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!---------------------------------------------------------------------------- Segunda Página -------------------------------------------------------------------->
+
+            <div class="container2">
+
+                <div class="box2">
+                    
+                    <div id="AjusteDaBox2">
+
+                        <div class="CaixaDigitacao">
+
+                            <label for="idPergunta">Qual aluno deseja verificar?</label>
+                            <input
+                                id="idPergunta"
+                                type="text"
+                                name="nmPergunta">
+                                
+                        </div>
+
+                        <div class="CaixaDigitacao">
+
+                            <label for="idSalario" id="idLbSalario">Digite o salário da 1ª pessoa</label>
+                            <input
+                                id="idSalario"
+                                type="number"
+                                name="nmSalario">
+
+                        </div>
+
+                        <div class="CaixaDeStatus">
+
+                            <input
+                                id="idStatus"
+                                name="nmStatus"
+                                type="text"
+                                readonly>
+
+                        </div>
+
+                    </div>                    
+
+                    <div class="CaixaDeBotoes">
+
+                        <div class="Botao">
+                            <input
+                                id="idBotaoGuardar"
+                                type="button"
+                                value="Guardar Informações"
+                                onclick="guardarInformacoes()">
+                        </div>
+
+                        <div class="Botao">
+                            <input
+                                id="idMostrarResultado"
+                                type="button"
+                                value="Mostrar Informações"
+                                onclick="mostrarInformacoes()">
+                        </div>
+
+                    </div>
+
+                    <div class="CaixaResultado">
+
+                        <div>
+                            <textarea
+                                id="idResultado"
+                                name="nmResultado"
+                                cols="40"
+                                rows="5"
+                                readonly>
+                            </textarea>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        
+        </form>
+
+        <script>
+
+            //--------------------------------------------------------------- \\ Declaração de variáveis // ---------------------------------------------------------------\\
+
+            var nomes = [];
+            var endereco = [];
+            var nomePai = [];
+            var nomeMae = [];
+            var telefones = [];
+            var notaMatematica = [];
+            var notaPortugues = [];
+            var notaQuimica = [];
+            var notaFisica = [];
+
+            //------------------------------------------------------------ \\ Função para inicializar o programa // --------------------------------------------------------\\
+
+            iniciar();
+
+            //-------------------------------------------- \\ Função para alimentar as arrays com informações do usuário // -------------------------------------------------\\
+
+            botaoGuardar.onclick = function() {
+
+                let isTelaValida = consistirTela();
+
+                if (isTelaValida) {
+
+                    cadastrar();
+
+                }
+
+            }
+
+            //--------------------------------------------------------------- \\ Funções para cadastrar informações // ------------------------------------------------------\\
+
+
+            function cadastrar(){
+
+                if (cont > 0){
+
+                    let entradaNome = document.getElementById("idNome").value;
+                    let escolhaGenero = document.querySelector('input[name=nmGenero]:checked').value;
+                    let entradaSalario = Number(document.getElementById("idSalario").value);
+                    nomes.push(entradaNome);
+                    generos.push(escolhaGenero);
+                    salarios.push(entradaSalario);
+                    console.log(nomes);
+                    console.log(generos);
+                    console.log(salarios);
+                    contSalario++;
+                    cont--;                    
+                    aviso.value = "Cadastro Realizado com sucesso!";
+                    aumentarLabels();
+                    limparTelas();
+                    
+                }
+                    
+
+                if (contSalario == 5) {
+
+                    travarCaixas();
+                    console.log(contSalario);
+
+                }
+            }
+
+            //--------------------------------------------------- \\ Funções de controle de labels e caixas de digitação // -------------------------------------------------\\
+
+            function aumentarLabels(){
+                
+                document.getElementById("idLbNome").innerText = "Digite o nome da "+ (contSalario + 1) +"ª pessoa";
+                document.getElementById("idLbSalario").innerText = "Digite o salário da "+ (contSalario + 1) +"ª pessoa"; 
+
+            }
+
+            function limparTelas(){
+
+                document.getElementById("idLbAluno").value = ""; //Zera o conteúdo do input cada vez que a função é chamada
+                document.getElementById("idSalario").value = ""; //Zera o conteúdo do input cada vez que a função é chamada1ª pessoa
+
+            }
+
+            function travarCaixas(){
+
+                document.getElementById("idBotaoGuardar").disabled = true; //Desativa o botão de guardar, quando forem guardados 30 números na array.
+                document.getElementById("idNome").disabled = true; //Desativa o botão de guardar, quando forem guardados 30 números na array.
+                document.getElementById("idSalario").disabled = true; //Desativa o botão de guardar, quando forem guardados 30 números na array.
+                document.getElementById("idLbNome").innerText = "Digite o nome da 5ª pessoa";// Repete a label em 10 para não passar para 11, sendo que começa em 0;
+                document.getElementById("idLbSalario").innerText = "Digite o salário da 5ª pessoa";// Repete a label em 10 para não passar para 11, sendo que começa em 0;
+                
+            }
+
+            //------------------------------------------------------------- \\ Função rotina para inicialização // ---------------------------------------------------------\\
+
+            function iniciar(){
+
+                botaoGuardar = document.getElementById("idBotaoGuardar");
+                botaoMostrar = document.getElementById("idMostrarResultado");
+                aviso = document.getElementById("idStatus");
+                resultado = document.getElementById("idResultado");
+                limparTelas();
+
+            }
+
+            //--------------------------------------------------------- \\ Função para verificar valores inseridos // ---------------------------------------------------------\\
+
+            function consistirTela(){
+
+                let nome = document.getElementById("idNome").value;
+                let salario = document.getElementById("idSalario").value;
+
+                if (nome == "" || nome == " ") {
+
+                    aviso.value = "Preenchimento obrigatório: Campo Nome";
+                    aviso.classList.add("alerta");
+                    document.getElementById("idNome").focus();                  
+                    return false;
+
+                }
+
+                if (salario == "" || salario == " ") {
+
+                    aviso.value = "Preenchimento obrigatório: Campo Salário";
+                    aviso.classList.add("alerta");
+                    document.getElementById("idSalario").focus();
+                    return false;
+
+                }
+
+                aviso.classList.remove("alerta");
+                return true;
+
+            }
+
+            //------------------------------------------------------------- \\ Função filtrar salários // -------------------------------------------------------------------\\
+
+            function limitarSalario(limiteSalario){
+                let salariosFiltrados = [];
+
+                salarios.forEach(function(salario,index) {
+
+                    if (salario > limiteSalario ) {
+                        salariosFiltrados.push(index);
+                    }
+
+                });
+
+                return salariosFiltrados;
+
+            }
+
+            //------------------------------------------------------- \\ Função mostrar resultado na tela // ----------------------------------------------------------------\\
+
+            botaoMostrar.onclick = function() {
+
+                let salariosFiltrados = limitarSalario(5000);
+
+                resultado.value = "Mulheres com salários acima dos R$5.000,00:";
+
+                salariosFiltrados.forEach(e =>{
+                    if(generos[e] == "Feminino"){
+                        resultado.value = resultado.value + "("+ nomes[e] + ": R$"+ salarios[e] +")";
+                    } else {
+                        resultado.value = "Não há funcionárias do sexo Feminino!"
+                    }
+                })
+            }
+
+        </script>
+    </body>
+</html>
