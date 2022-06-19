@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="style.css">
-        <title>Exercício 003 - Funcionários e salários</title>
+        <title>Exercício 006 - Cadastro de alunos e dados</title>
     </head>
     <body>
 
@@ -27,7 +27,7 @@
                             <input
                                 id="idAluno"
                                 type="text"
-                                name="nmAluno">
+                                name="nome">
                                 
                         </div>
 
@@ -68,7 +68,8 @@
                                 id="idTelefonePais"
                                 name="nmTelefonePais"
                                 type="tel"
-                                maxlength="13">
+                                maxlength="15"
+                                onkeypress="formatarNumero(this)">
 
                         </div>
 
@@ -124,24 +125,36 @@
 
                         </div>
 
+                        <div class="CaixaDigitacao">
+
+                            <input
+                                id="idAlerta"
+                                name="nmAlerta"
+                                type="text"
+                                readonly>
+
+                        </div>
+
                     </div>
                     
                     <div class="CaixaDeBotoes">
                     
                         <div class="Botao">
                             <input
-                                id="idBotoesEsquerda"
+                                id="idBotaoGuardar"
                                 type="button"
-                                value="Guardar Informações"
+                                value="Guardar e Continuar"
                                 onclick="guardarInformacoes()">
                         </div>
 
                         <div class="Botao">
-                            <input
-                                id="idBotoesEsquerda"
-                                type="button"
-                                value="Finalizar"
-                                onclick="finalizarQuestionario()">
+
+                                <input
+                                    id="idBotaoFinalizar"
+                                    type="button"
+                                    value="Finalizar e Verificar Cadastros"
+                                    onclick="finalizarQuestionario()"></a>
+                            
                         </div>
 
                     </div>
@@ -158,71 +171,33 @@
                     
                     <div id="AjusteDaBox2">
 
-                        <div class="CaixaDigitacao">
-
-                            <label for="idPergunta">Qual aluno deseja verificar?</label>
-                            <input
-                                id="idPergunta"
-                                type="text"
-                                name="nmPergunta">
-                                
+                        <div id="Titulo">
+                            <h1>Dados e situação dos alunos</h1>
                         </div>
 
-                        <div class="CaixaDigitacao">
+                        <div class="Dados">
 
-                            <label for="idSalario" id="idLbSalario">Digite o salário da 1ª pessoa</label>
-                            <input
-                                id="idSalario"
-                                type="number"
-                                name="nmSalario">
-
-                        </div>
-
-                        <div class="CaixaDeStatus">
-
-                            <input
-                                id="idStatus"
-                                name="nmStatus"
-                                type="text"
-                                readonly>
-
-                        </div>
-
-                    </div>                    
-
-                    <div class="CaixaDeBotoes">
-
-                        <div class="Botao">
-                            <input
-                                id="idBotaoGuardar"
-                                type="button"
-                                value="Guardar Informações"
-                                onclick="guardarInformacoes()">
-                        </div>
-
-                        <div class="Botao">
-                            <input
-                                id="idMostrarResultado"
-                                type="button"
-                                value="Mostrar Informações"
-                                onclick="mostrarInformacoes()">
-                        </div>
-
-                    </div>
-
-                    <div class="CaixaResultado">
-
-                        <div>
                             <textarea
-                                id="idResultado"
-                                name="nmResultado"
-                                cols="40"
-                                rows="5"
+                                id="idRelatorio"
+                                name="nmRelatorio"
+                                cols="50"
+                                rows="20"
                                 readonly>
                             </textarea>
+
                         </div>
 
-                    </div>
+                        <div class="CaixaDeBotoes">
+                    
+                            <div class="Botao">
+                                <input
+                                    id="idBotaoReiniciar"
+                                    type="button"
+                                    value="Reiniciar Cadastro"
+                                    onclick="reiniciarCadastro()">
+                            </div>
+                        
+                        </div>
 
                 </div>
 
@@ -235,14 +210,17 @@
             //--------------------------------------------------------------- \\ Declaração de variáveis // ---------------------------------------------------------------\\
 
             var nomes = [];
-            var endereco = [];
-            var nomePai = [];
-            var nomeMae = [];
+            var enderecos = [];
+            var nomesPai = [];
+            var nomesMae = [];
             var telefones = [];
-            var notaMatematica = [];
-            var notaPortugues = [];
-            var notaQuimica = [];
-            var notaFisica = [];
+            var primeirasNotas = [];
+            var segundasNotas = [];
+            var terceirasNotas = [];
+            var quartasNotas = [];
+            var contLabel = 0;
+            var aviso;
+            var relatorio;
 
             //------------------------------------------------------------ \\ Função para inicializar o programa // --------------------------------------------------------\\
 
@@ -262,63 +240,124 @@
 
             }
 
+            //-------------------------------------- \\ Função para finalizar o preenchimento do formulário e partir para consulta // ----------------------------------------\\
+
+            botaoFinalizar.onclick = function(){
+
+                travarCaixas();
+                limparTelas();
+                mostrarDados();
+                window.scrollTo(0, 1000);
+
+                let dados = mostrarDados();
+
+                relatorio.value = "Dados dos alunos: \n"
+
+                dados.forEach(e => {
+
+                    relatorio.value = relatorio.value + "\nNome: "+ nomes[e] +"\nEndereço: "+ enderecos[e] +"\nNome da Mãe: "+ nomesMae[e] +"\nNome do Pai: "+ nomesPai[e] +"\nTelefone dos pais: "+ telefones[e] +"\nPrimeira Nota: "+ primeirasNotas[e] +"\nSegunda Nota: "+ segundasNotas[e] +"\nTerceira Nota: "+ terceirasNotas[e] +"\nQuarta Nota: "+ quartasNotas[e] +"\n";
+
+                    });
+
+            }
+
+            //-------------------------------------- \\ Função para finalizar o preenchimento do formulário e partir para consulta // ----------------------------------------\\
+
+            botaoReiniciar.onclick = function(){
+
+                reiniciar();
+
+            }
+
             //--------------------------------------------------------------- \\ Funções para cadastrar informações // ------------------------------------------------------\\
 
 
             function cadastrar(){
 
-                if (cont > 0){
+                    let entradaNomes = document.getElementById("idAluno").value;
+                    let entradaEnderecos = document.getElementById("idEndereco").value;
+                    let entradaNomesMae = document.getElementById("idNomeMae").value;
+                    let entradaNomesPai = document.getElementById("idNomePai").value;
+                    let entradaTelefones = document.getElementById("idTelefonePais").value;
+                    let entradaPrimeirasNotas = document.getElementById("idPrimeiraNota").value;
+                    let entradaSegundasNotas = document.getElementById("idSegundaNota").value;
+                    let entradaTerceirasNotas = document.getElementById("idTerceiraNota").value;
+                    let entradaQuartasNotas = document.getElementById("idQuartaNota").value;
 
-                    let entradaNome = document.getElementById("idNome").value;
-                    let escolhaGenero = document.querySelector('input[name=nmGenero]:checked').value;
-                    let entradaSalario = Number(document.getElementById("idSalario").value);
-                    nomes.push(entradaNome);
-                    generos.push(escolhaGenero);
-                    salarios.push(entradaSalario);
-                    console.log(nomes);
-                    console.log(generos);
-                    console.log(salarios);
-                    contSalario++;
-                    cont--;                    
+                    nomes.push(entradaNomes);
+                    enderecos.push(entradaEnderecos);
+                    nomesMae.push(entradaNomesMae);
+                    nomesPai.push(entradaNomesPai);
+                    telefones.push(entradaTelefones);
+                    primeirasNotas.push(entradaPrimeirasNotas);
+                    segundasNotas.push(entradaSegundasNotas);
+                    terceirasNotas.push(entradaTerceirasNotas);
+                    quartasNotas.push(entradaQuartasNotas);
+
+                    contLabel++;
                     aviso.value = "Cadastro Realizado com sucesso!";
                     aumentarLabels();
                     limparTelas();
-                    
-                }
-                    
 
-                if (contSalario == 5) {
-
-                    travarCaixas();
-                    console.log(contSalario);
-
-                }
             }
 
             //--------------------------------------------------- \\ Funções de controle de labels e caixas de digitação // -------------------------------------------------\\
 
             function aumentarLabels(){
                 
-                document.getElementById("idLbNome").innerText = "Digite o nome da "+ (contSalario + 1) +"ª pessoa";
-                document.getElementById("idLbSalario").innerText = "Digite o salário da "+ (contSalario + 1) +"ª pessoa"; 
+                document.getElementById("idLbAluno").innerText = "Digite o nome da "+ (contLabel + 1) +"ª pessoa";
+                document.getElementById("idLbEndereco").innerText = "Digite o endereco da "+ (contLabel + 1) +"ª pessoa";
+                document.getElementById("idLbNomeMae").innerText = "Digite o nome da mãe da "+ (contLabel + 1) +"ª pessoa";
+                document.getElementById("idLbNomePai").innerText = "Digite o nome do pai da "+ (contLabel + 1) +"ª pessoa";
+                document.getElementById("idLbTelefonePais").innerText = "Digite o telefone dos pais da "+ (contLabel + 1) +"ª pessoa";
+                document.getElementById("idLbPrimeiraNota").innerText = "Digite a primeira nota da "+ (contLabel + 1) +"ª pessoa"; 
+                document.getElementById("idLbSegundaNota").innerText = "Digite a segunda nota da "+ (contLabel + 1) +"ª pessoa";
+                document.getElementById("idLbTerceiraNota").innerText = "Digite a terceira nota da "+ (contLabel + 1) +"ª pessoa"; 
+                document.getElementById("idLbQuartaNota").innerText = "Digite a quarta nota da "+ (contLabel + 1) +"ª pessoa"; 
 
             }
 
             function limparTelas(){
 
-                document.getElementById("idLbAluno").value = ""; //Zera o conteúdo do input cada vez que a função é chamada
-                document.getElementById("idSalario").value = ""; //Zera o conteúdo do input cada vez que a função é chamada1ª pessoa
+                document.getElementById("idAluno").value = "";
+                document.getElementById("idEndereco").value = "";
+                document.getElementById("idNomeMae").value = "";
+                document.getElementById("idNomePai").value = "";
+                document.getElementById("idTelefonePais").value = ""; 
+                document.getElementById("idPrimeiraNota").value = ""; 
+                document.getElementById("idSegundaNota").value = ""; 
+                document.getElementById("idTerceiraNota").value = "";
+                document.getElementById("idQuartaNota").value = ""; 
 
             }
 
             function travarCaixas(){
 
-                document.getElementById("idBotaoGuardar").disabled = true; //Desativa o botão de guardar, quando forem guardados 30 números na array.
-                document.getElementById("idNome").disabled = true; //Desativa o botão de guardar, quando forem guardados 30 números na array.
-                document.getElementById("idSalario").disabled = true; //Desativa o botão de guardar, quando forem guardados 30 números na array.
-                document.getElementById("idLbNome").innerText = "Digite o nome da 5ª pessoa";// Repete a label em 10 para não passar para 11, sendo que começa em 0;
-                document.getElementById("idLbSalario").innerText = "Digite o salário da 5ª pessoa";// Repete a label em 10 para não passar para 11, sendo que começa em 0;
+                document.getElementById("idAluno").disabled = true; 
+                document.getElementById("idEndereco").disabled = true;
+                document.getElementById("idNomeMae").disabled = true;
+                document.getElementById("idNomePai").disabled = true;
+                document.getElementById("idTelefonePais").disabled = true;
+                document.getElementById("idPrimeiraNota").disabled = true; 
+                document.getElementById("idSegundaNota").disabled = true;
+                document.getElementById("idTerceiraNota").disabled = true;
+                document.getElementById("idQuartaNota").disabled = true;
+                document.getElementById("idAlerta").disabled = true;
+                document.getElementById("idBotaoGuardar").disabled = true;
                 
+            }
+
+            function formatarNumero(idTelefonePais){
+
+                if(idTelefonePais.value.length == 0)
+                    idTelefonePais.value = '(' + idTelefonePais.value;
+
+                if(idTelefonePais.value.length == 3)
+                    idTelefonePais.value = idTelefonePais.value + ') ';
+    
+                if(idTelefonePais.value.length == 10)
+                    idTelefonePais.value = idTelefonePais.value + '-';
+
             }
 
             //------------------------------------------------------------- \\ Função rotina para inicialização // ---------------------------------------------------------\\
@@ -326,34 +365,114 @@
             function iniciar(){
 
                 botaoGuardar = document.getElementById("idBotaoGuardar");
-                botaoMostrar = document.getElementById("idMostrarResultado");
-                aviso = document.getElementById("idStatus");
-                resultado = document.getElementById("idResultado");
+                botaoFinalizar = document.getElementById("idBotaoFinalizar");
+                botaoReiniciar = document.getElementById("idBotaoReiniciar");
+                aviso = document.getElementById("idAlerta");
+                relatorio = document.getElementById("idRelatorio");
                 limparTelas();
 
             }
 
-            //--------------------------------------------------------- \\ Função para verificar valores inseridos // ---------------------------------------------------------\\
+            //------------------------------------------------------- \\ Função rotina para reinicialização de cadastro // ---------------------------------------------------\\
+
+            function reiniciar(){
+                
+                window.scrollTo(0, 0);
+                location.reload();
+
+            }
+
+            //-------------------------------------------------- \\ Função para verificar consistência dos valores inseridos // -----------------------------------------------\\
 
             function consistirTela(){
 
-                let nome = document.getElementById("idNome").value;
-                let salario = document.getElementById("idSalario").value;
+                let nome = document.getElementById("idAluno").value;
+                let endereco = document.getElementById("idEndereco").value;
+                let nomeMae = document.getElementById("idNomeMae").value;
+                let nomePai = document.getElementById("idNomePai").value;
+                let telefone = document.getElementById("idTelefonePais").value;
+                let primeiraNota = document.getElementById("idPrimeiraNota").value;
+                let segundaNota = document.getElementById("idSegundaNota").value;
+                let terceiraNota = document.getElementById("idTerceiraNota").value;
+                let quartaNota = document.getElementById("idQuartaNota").value;
 
                 if (nome == "" || nome == " ") {
 
-                    aviso.value = "Preenchimento obrigatório: Campo Nome";
+                    aviso.value = "Preenchimento obrigatório: Campo Nome!";
                     aviso.classList.add("alerta");
-                    document.getElementById("idNome").focus();                  
+                    document.getElementById("idAluno").focus();                  
                     return false;
 
                 }
 
-                if (salario == "" || salario == " ") {
+                if (endereco == "" || endereco == " ") {
 
-                    aviso.value = "Preenchimento obrigatório: Campo Salário";
+                    aviso.value = "Preenchimento obrigatório: Campo Endereço!";
                     aviso.classList.add("alerta");
-                    document.getElementById("idSalario").focus();
+                    document.getElementById("idEndereco").focus();
+                    return false;
+
+                }
+
+                if (nomePai == "" || nomePai == " ") {
+
+                    aviso.value = "Preenchimento obrigatório: Campo Nome do Pai!";
+                    aviso.classList.add("alerta");
+                    document.getElementById("idNomePai").focus();
+                    return false;
+
+                }
+
+                if (nomeMae == "" || nomeMae == " ") {
+
+                    aviso.value = "Preenchimento obrigatório: Campo Nome da Mãe!";
+                    aviso.classList.add("alerta");
+                    document.getElementById("idNomeMae").focus();
+                    return false;
+
+                }
+
+                if (telefone == "" || telefone == " ") {
+
+                    aviso.value = "Preenchimento obrigatório: Campo Telefone dos pais!";
+                    aviso.classList.add("alerta");
+                    document.getElementById("idTelefonePais").focus();
+                    return false;
+
+                }
+
+                if (primeiraNota < 0 || primeiraNota > 10) {
+
+                    aviso.value = "Primeira Nota inválida: Digite uma nota de 0 a 10!";
+                    aviso.classList.add("alerta");
+                    document.getElementById("idPrimeiraNota").focus();
+                    return false;
+
+                }
+
+                if (segundaNota < 0 || segundaNota > 10) {
+
+                    aviso.value = "Segunda Nota inválida: Digite uma nota de 0 a 10!";
+                    aviso.classList.add("alerta");
+                    document.getElementById("idSegundaNota").focus();
+                    return false;
+
+                }
+
+                if (terceiraNota < 0 || terceiraNota > 10) {
+
+                    aviso.value = "Terceira Nota inválida: Digite uma nota de 0 a 10!";
+                    aviso.classList.add("alerta");
+                    document.getElementById("idTerceiraNota").focus();
+                    return false;
+
+                }
+
+                if (quartaNota < 0 || quartaNota > 10) {
+
+                    aviso.value = "Quarta Nota inválida: Digite uma nota de 0 a 10!";
+                    aviso.classList.add("alerta");
+                    document.getElementById("idQuartaNota").focus();
                     return false;
 
                 }
@@ -365,36 +484,34 @@
 
             //------------------------------------------------------------- \\ Função filtrar salários // -------------------------------------------------------------------\\
 
-            function limitarSalario(limiteSalario){
-                let salariosFiltrados = [];
+            function mostrarDados(){
 
-                salarios.forEach(function(salario,index) {
+                let dados = [];
 
-                    if (salario > limiteSalario ) {
-                        salariosFiltrados.push(index);
-                    }
+                nomes.forEach(function(nome, index){
+
+                    dados.push(index);
 
                 });
 
-                return salariosFiltrados;
+                return dados;
 
             }
 
-            //------------------------------------------------------- \\ Função mostrar resultado na tela // ----------------------------------------------------------------\\
+            //------------------------------------------------------------- \\ Função filtrar salários // -------------------------------------------------------------------\\
 
-            botaoMostrar.onclick = function() {
+            function mostrarDados(){
 
-                let salariosFiltrados = limitarSalario(5000);
+                let dados = [];
 
-                resultado.value = "Mulheres com salários acima dos R$5.000,00:";
+                nomes.forEach(function(nome, index){
 
-                salariosFiltrados.forEach(e =>{
-                    if(generos[e] == "Feminino"){
-                        resultado.value = resultado.value + "("+ nomes[e] + ": R$"+ salarios[e] +")";
-                    } else {
-                        resultado.value = "Não há funcionárias do sexo Feminino!"
-                    }
-                })
+                    dados.push(index);
+
+                });
+
+                return dados;
+
             }
 
         </script>
