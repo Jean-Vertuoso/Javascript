@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+        <title>Exercício 007 - Jogo de adivinhação</title>
+    </head>
+    <body>
+
+        <form action="" method="get">
+
+            <div class="container1">
+
+                <div class="box1">
+
+                    <div id="Titulo">
+                        <h1>Jogo de adivinhação</h1>
+                    </div>
+
+                    <div id="AjusteDaBox1">
+
+                        <div>
+
+                            <h2 class="explicacao"> A regra é simples: será sorteado um estado brasileiro e os jogadores terão que acertar qual a capital deste estado. Quem tiver a maior pontuação ao finalizar o jogo, vence.</h2>
+                                
+                        </div>
+
+                        <div class="EscolhaNJogadores">
+
+                            <select id="idJogadores" name="nmJogadores">
+
+                                <option value="um">1 jogador</option>
+                                <option value="dois">2 jogadores</option>
+                                <option value="tres">3 jogadores</option>
+                                <option value="quatro">4 jogadores</option>
+
+                            </select>
+
+
+
+                        </div>
+
+                        <div>
+                            
+                            <a href="jogo/index.html" target="_self">
+                            <input
+                                id="idBotaoIniciar"
+                                value="Clique aqui para iniciar o jogo"
+                                type="button"></a>
+                            
+                        </div>
+                    
+                    </div>
+                
+                </div>
+
+            </div>
+
+            <!---------------------------------------------------------------------------- Segunda Página -------------------------------------------------------------------->
+
+
+            <div class="container2">
+
+                <div class="box2">
+
+                    <div class="Sorteio">
+
+                        <h2>O estado sorteado é...</h2>
+                        <h2 id="estadoSorteado"></h2>
+
+                    </div>
+
+                    <div id="AjusteDaBox2">
+
+                        <div class="CaixaDigitacao">
+
+                            <label for="idJogador1" id="idLbAluno">Jogador 1:</label>
+                            <input
+                                id="idJogador1"
+                                type="text"
+                                name="nmJogador1">
+                                
+                        </div>
+
+                        <div class="CaixaDigitacao">
+
+                            <label for="idJogador2" id="idLbEndereco">Jogador 2:</label>
+                            <input
+                                id="idJogador2"
+                                type="text"
+                                name="nmJogador2">
+
+                        </div>
+
+                        <div class="CaixaDigitacao">
+
+                            <label for="idJogador3" id="idLbNomeMae">Jogador 3:</label>
+                            <input
+                                id="idJogador3"
+                                type="text"
+                                name="nmJogador3">
+
+                        </div>
+
+                        <div class="CaixaDigitacao">
+
+                            <label for="idJogador4" id="idLbNomePai">Jogador 4:</label>
+                            <input
+                                id="idJogador4"
+                                type="text"
+                                name="nmJogador4">
+
+                        </div>
+
+                        <div class="CaixaDeStatus">
+
+                            <input
+                                id="idStatus"
+                                name="nmStatus"
+                                type="text"
+                                readonly>
+
+                        </div>
+
+                    </div>                    
+
+                    <div class="CaixaDeBotoes">
+
+                        <div class="Botao">
+                            <input
+                                id="idBotaoGuardar"
+                                type="button"
+                                value="Guardar e Avançar"
+                                onclick="guardarInformacoes()">
+                        </div>
+
+                        <div class="Botao">
+                            <input
+                                id="idMostrarResultado"
+                                type="button"
+                                value="Finalizar jogo"
+                                onclick="finalizarJogo()">
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!---------------------------------------------------------------------------- Terceira Página -------------------------------------------------------------------->
+
+            <div class="container3">
+
+                <div class="box3">
+
+                    <div id="Titulo">
+                        <h1>Resultados</h1>
+                    </div>
+
+                    <div id="AjusteDaBox3">
+
+                        
+                    
+                    </div>
+                
+                </div>
+
+            </div>    
+        
+        </form>
+
+        <script>
+
+            //--------------------------------------------------------------- \\ Declaração de variáveis // ---------------------------------------------------------------\\
+
+            const estados = ["Acre (AC)", "Alagoas (AL)", "Amapá (AP)", "Amazonas (AM)", "Bahia (BA)", "Ceará (CE)", "Distrito Federal (DF)", "Espírito Santo (ES)", "Goiás (GO)", "Maranhão (MA)", "Mato Grosso (MT)", "Mato Grosso do Sul (MS)", "Minas Gerais (MG)", "Pará (PA)", "Paraíba (PB)", "Paraná (PR)", "Pernambuco (PE)", "Piauí (PI)", "Rio de Janeiro (RJ)", "Rio Grande do Norte (RN)", "Rio Grande do Sul (RS)", "Rondônia (RO)", "Roraima (RR)", "Santa Catarina (SC)", "São Paulo (SP)", "Sergipe (SE)", "Tocantins (TO)"]
+
+            const capitais = ["Rio Branco", "Maceió", "Macapá", "Manaus", "Salvador", "Fortaleza", "Brasília", "Vitória", "Goiânia", "São Luís", "Cuiabá", "Campo Grande", "Belo Horizonte", "Belém", "João Pessoa", "Curitiba", "Recife", "Teresina", "Rio de Janeiro", "Natal", "Porto Alegre", "Porto Velho", "Boa Vista", "Florianópolis", "São Paulo", "Aracaju", "Palmas"]
+
+            var jogador1 = 0;
+            var jogador2 = 0;
+            var jogador3 = 0;
+            var jogador4 = 0;
+            var numeroJogadores = document.getElementById("idJogadores").value;
+            var cont;
+
+            //------------------------------------------------------------ \\ Função para inicializar o programa // --------------------------------------------------------\\
+
+            iniciar();
+
+            //-------------------------------------------- \\ Função para alimentar as arrays com informações do usuário // -------------------------------------------------\\
+
+            botaoGuardar.onclick = function() {
+
+                let isTelaValida = consistirTela();
+
+                if (isTelaValida) {
+
+                    cadastrar();
+
+                }
+
+            }
+
+            //--------------------------------------------------------------- \\ Funções para cadastrar informações // ------------------------------------------------------\\
+
+
+            function cadastrar(){
+
+                if (cont > 0){
+
+                    let entradaNome = document.getElementById("idNome").value;
+                    let escolhaGenero = document.querySelector('input[name=nmGenero]:checked').value;
+                    let entradaSalario = Number(document.getElementById("idSalario").value);
+                    nomes.push(entradaNome);
+                    generos.push(escolhaGenero);
+                    salarios.push(entradaSalario);
+                    console.log(nomes);
+                    console.log(generos);
+                    console.log(salarios);
+                    contSalario++;
+                    cont--;                    
+                    aviso.value = "Cadastro Realizado com sucesso!";
+                    aumentarLabels();
+                    limparTelas();
+                    
+                }
+                    
+
+                if (contSalario == 5) {
+
+                    travarCaixas();
+                    console.log(contSalario);
+
+                }
+            }
+
+            //--------------------------------------------------- \\ Funções de controle de labels e caixas de digitação // -------------------------------------------------\\
+
+            function aumentarLabels(){
+                
+                document.getElementById("idLbNome").innerText = "Digite o nome da "+ (contSalario + 1) +"ª pessoa";
+                document.getElementById("idLbSalario").innerText = "Digite o salário da "+ (contSalario + 1) +"ª pessoa"; 
+
+            }
+
+            function limparTelas(){
+
+                document.getElementById("idNome").value = ""; //Zera o conteúdo do input cada vez que a função é chamada
+                document.getElementById("idSalario").value = ""; //Zera o conteúdo do input cada vez que a função é chamada1ª pessoa
+
+            }
+
+            function travarCaixas(){
+
+                document.getElementById("idBotaoGuardar").disabled = true; //Desativa o botão de guardar, quando forem guardados 30 números na array.
+                document.getElementById("idNome").disabled = true; //Desativa o botão de guardar, quando forem guardados 30 números na array.
+                document.getElementById("idSalario").disabled = true; //Desativa o botão de guardar, quando forem guardados 30 números na array.
+                document.getElementById("idLbNome").innerText = "Digite o nome da 5ª pessoa";// Repete a label em 10 para não passar para 11, sendo que começa em 0;
+                document.getElementById("idLbSalario").innerText = "Digite o salário da 5ª pessoa";// Repete a label em 10 para não passar para 11, sendo que começa em 0;
+                
+            }
+
+            //------------------------------------------------------------- \\ Função rotina para inicialização // ---------------------------------------------------------\\
+
+            function iniciar(){
+
+                botaoIniciar = document.getElementById("idBotaoIniciar");
+                botaoGuardar = document.getElementById("idBotaoGuardar");
+                botaoMostrar = document.getElementById("idMostrarResultado");
+                aviso = document.getElementById("idStatus");
+                resultado = document.getElementById("idResultado");
+                limparTelas();
+
+            }
+
+            //--------------------------------------------------------- \\ Função para verificar valores inseridos // ---------------------------------------------------------\\
+
+            function consistirTela(){
+
+                let nome = document.getElementById("idNome").value;
+                let salario = document.getElementById("idSalario").value;
+
+                if (nome == "" || nome == " ") {
+
+                    aviso.value = "Preenchimento obrigatório: Campo Nome";
+                    aviso.classList.add("alerta");
+                    document.getElementById("idNome").focus();                  
+                    return false;
+
+                }
+
+                if (salario == "" || salario == " ") {
+
+                    aviso.value = "Preenchimento obrigatório: Campo Salário";
+                    aviso.classList.add("alerta");
+                    document.getElementById("idSalario").focus();
+                    return false;
+
+                }
+
+                aviso.classList.remove("alerta");
+                return true;
+
+            }
+
+            //------------------------------------------------------------- \\ Função filtrar salários // -------------------------------------------------------------------\\
+
+            function limitarSalario(limiteSalario){
+                let salariosFiltrados = [];
+
+                salarios.forEach(function(salario,index) {
+
+                    if (salario > limiteSalario ) {
+                        salariosFiltrados.push(index);
+                    }
+
+                });
+
+                return salariosFiltrados;
+
+            }
+
+            //------------------------------------------------------- \\ Função mostrar resultado na tela // ----------------------------------------------------------------\\
+
+            botaoMostrar.onclick = function() {
+
+                let salariosFiltrados = limitarSalario(5000);
+
+                resultado.value = "Mulheres com salários acima dos R$5.000,00:";
+
+                salariosFiltrados.forEach(e =>{
+                    if(generos[e] == "Feminino"){
+                        resultado.value = resultado.value + "("+ nomes[e] + ": R$"+ salarios[e] +")";
+                    } else {
+                        resultado.value = "Não há funcionárias do sexo Feminino!"
+                    }
+                })
+            }
+
+        </script>
+    </body>
+</html>

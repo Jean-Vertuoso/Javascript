@@ -1,0 +1,218 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.container1{
+
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.container2{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.container3{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.box1{
+
+    margin: 40px;
+    display: flex;
+    flex-direction: column;
+    border: inset;
+    border-width: medium;
+    width: 700px;
+    height: 400px;
+    background-color: aliceblue;
+    justify-content: flex-start;
+    align-items: center;
+
+}
+
+.box2{
+    display: flex;
+    flex-direction: column;
+    border: outset;
+    border-width: medium;
+    width: 700px;
+    height: 700px;
+    background-color: aliceblue;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.box3{
+
+    margin: 40px;
+    display: flex;
+    flex-direction: column;
+    border: inset;
+    border-width: medium;
+    width: 700px;
+    height: 400px;
+    background-color: aliceblue;
+    justify-content: flex-start;
+    align-items: center;
+
+}
+
+#AjusteDaBox1{
+
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    width: 600px;
+    height: 70%;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+#AjusteDaBox2{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    width:400px;
+    align-items: center;
+    margin-top:5%;
+}
+
+#AjusteDaBox3{
+
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    width: 600px;
+    height: 70%;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+#idJogadores{
+
+    font-size: 18px;
+    padding: 5px;
+    cursor: pointer;
+
+}
+
+#Titulo{
+    display: block;
+    padding: 20px;
+}
+
+.explicacao{
+    
+    text-align: justify;
+
+}
+
+#BotaoIniciar{
+
+    width: 250px;
+    height: 50px;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 50px;
+
+}
+
+.CaixaDigitacao{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.CaixaDigitacao input{
+
+    width: 200px;
+    height: 25px;
+    font-size: 15px;
+    font-weight: bold;
+    text-align: center;
+
+}
+
+.CaixaDigitacao label{
+    font-weight: bold;
+    margin-right: 5px;
+    padding:5px;
+}
+
+.CaixaDeBotoes{
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+}
+
+.Sorteio{
+
+    margin-top: 30px;
+    margin-bottom: 20px;
+
+}
+
+#idBotaoGuardar{
+
+    width: 180px;
+    height: 50px;
+    font-size: 16px;
+    font-weight: bold;
+
+}
+
+#idMostrarResultado{
+
+    width: 180px;
+    height: 50px;
+    font-size: 16px;
+    font-weight: bold;
+
+}
+
+.CaixaDeStatus{
+    margin-bottom: 30px;
+}
+
+#idStatus{    
+    font-weight: bold;
+    width: 320px;
+    height: 25px;
+    font-size: 15px;
+    margin-top: 50px;
+    text-align: center;
+}
+
+.CaixaResultado{
+    margin:30px;
+}
+
+#idResultado{
+    font-weight: bold;
+    font-size: 15px;
+    resize: none;
+}
+
+.alerta{
+    color: red;
+}

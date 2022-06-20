@@ -218,6 +218,8 @@
             var segundasNotas = [];
             var terceirasNotas = [];
             var quartasNotas = [];
+            var media = [];
+            var situacao = [];
             var contLabel = 0;
             var aviso;
             var relatorio;
@@ -503,6 +505,22 @@
             function mostrarDados(){
 
                 let dados = [];
+
+                nomes.forEach(function(nome, index){
+
+                    dados.push(index);
+
+                });
+
+                return dados;
+
+            }
+
+            //------------------------------------------------------------- \\ Função filtrar salários // -------------------------------------------------------------------\\
+
+            function calcularMedia(){
+
+                let medias = [];
 
                 nomes.forEach(function(nome, index){
 
